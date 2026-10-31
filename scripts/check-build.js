@@ -25,9 +25,12 @@ for (const script of scripts) new vm.Script(script, { filename: 'public/index.ht
 new vm.Script(config, { filename: 'public/config.js' });
 new vm.Script(sw, { filename: 'public/sw.js' });
 new vm.Script(expansion, { filename: 'public/learning-expansion.js' });
-const extraSigns = (expansion.match(/^\['/gm) || []).length;
-const bamakoCases = (expansion.match(/^\{title:/gm) || []).length;
-const goodPractices = (expansion.match(/^\['[👀🛵🚶🪖↔️📵🧘🔧]/gm) || []).length;
+const signBlock = expansion.split('const details=')[0];
+const extraSigns = (signBlock.match(/^\['/gm) || []).length;
+const bamakoBlock = (expansion.split('const bamako=[')[1] || '').split('];\\nwindow.scenarios')[0];
+const bamakoCases = (bamakoBlock.match(/^\{title:/gm) || []).length;
+const habitsBlock = (expansion.split('const goodHabits=[')[1] || '').split('];')[0];
+const goodPractices = (habitsBlock.match(/^\['/gm) || []).length;
 if (lessons + extraSigns !== 51) throw new Error('Le catalogue doit contenir exactement 51 panneaux : ' + (lessons + extraSigns));
 if (bamakoCases !== 8) throw new Error('Le module Bamako doit contenir 8 cas : ' + bamakoCases);
 if (goodPractices !== 8) throw new Error('Le module bonnes conduites doit contenir 8 scènes : ' + goodPractices);
