@@ -1,6 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-<rect width="128" height="128" rx="28" fill="#102d25"/><path d="M0 94h128v34H0z" fill="#1a4939"/>
-<path d="M45 128 56 60h16l11 68" fill="#68766e"/><path d="M61 73h6l2 15h-10zM57 99h14l3 19H54z" fill="#fffefa"/>
-<path d="M18 54 35 23 52 54z" fill="#fffefa" stroke="#c43e3e" stroke-width="5" stroke-linejoin="round"/><path d="M33 32 31 43h8l-2-11z" fill="#c43e3e"/>
-<rect x="78" y="20" width="30" height="56" rx="8" fill="#26332e" stroke="#fffefa" stroke-width="3"/><circle cx="93" cy="32" r="6" fill="#e3443e"/><circle cx="93" cy="48" r="6" fill="#f3bd3c"/><circle cx="93" cy="64" r="6" fill="#3da86c"/>
+<rect width="128" height="128" rx="28" fill="#087a3e"/>
+<clipPath id="round"><rect width="128" height="128" rx="28"/></clipPath>
+<g clip-path="url(#round)"><path d="M0 0h42.67v128H0z" fill="#087a3e"/><path d="M42.67 0h42.66v128H42.67z" fill="#f9d616"/><path d="M85.33 0H128v128H85.33z" fill="#ce1126"/></g>
+<path d="M34 128 51 51h26l17 77" fill="#25352e" stroke="#fffefa" stroke-width="3" stroke-linejoin="round"/>
+<path d="M61 65h6l2 16h-10zM56 94h16l4 22H52z" fill="#fffefa"/>
+<path d="M14 47 31 16 48 47z" fill="#fffefa" stroke="#ce1126" stroke-width="5" stroke-linejoin="round"/><path d="M29 25 27 37h8l-2-12z" fill="#ce1126"/>
+<rect x="78" y="16" width="36" height="64" rx="9" fill="#26332e" stroke="#fffefa" stroke-width="3"/><circle cx="96" cy="30" r="7" fill="#ce1126"/><circle cx="96" cy="48" r="7" fill="#f9d616"/><circle cx="96" cy="66" r="7" fill="#087a3e"/>
 </svg>

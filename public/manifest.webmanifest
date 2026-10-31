@@ -1,16 +1,21 @@
 {
   "id": "/",
-  "name": "Mali Bolifen Kalanso — Mobilité sûre",
+  "name": "Mali Bolifen Kalanso — École de la mobilité sûre",
   "short_name": "Bolifen Kalanso",
-  "description": "Apprendre les bons réflexes de sécurité routière au Mali, avec des panneaux visuels, la lecture vocale et des quiz.",
+  "description": "Apprendre les bons réflexes de sécurité routière au Mali avec des leçons visuelles et des quiz.",
   "lang": "fr",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#f8f6ef",
-  "theme_color": "#102d25",
+  "background_color": "#f8f7ef",
+  "theme_color": "#087a3e",
   "orientation": "any",
   "icons": [
-    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
   ]
 }
