@@ -25,6 +25,7 @@ for (const script of scripts) new vm.Script(script, { filename: 'public/index.ht
 new vm.Script(config, { filename: 'public/config.js' });
 new vm.Script(sw, { filename: 'public/sw.js' });
 new vm.Script(expansion, { filename: 'public/learning-expansion.js' });
+const lessons = (html.match(/\\{id:'/g) || []).length;
 const signBlock = expansion.split('const details=')[0];
 const extraSigns = (signBlock.match(/^\['/gm) || []).length;
 const bamakoBlock = (expansion.split('const bamako=[')[1] || '').split('];\\nwindow.scenarios')[0];
