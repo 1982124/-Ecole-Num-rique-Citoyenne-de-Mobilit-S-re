@@ -3,12 +3,13 @@
 **École Numérique et Citoyenne pour une Mobilité Sûre** — application pédagogique de sensibilisation à la sécurité routière, conçue pour être simple à utiliser sur téléphone et ordinateur.
 
 ## Fonctionnalités
-- 21 leçons visuelles avec illustrations SVG originales intégrées au code.
+- 51 panneaux et repères visuels : 21 notions initiales et 30 panneaux supplémentaires illustrés en SVG, avec explications, contexte, bon réflexe et erreurs à éviter.
 - Explications en français facile et lecture vocale via la synthèse vocale du navigateur si disponible.
 - Recherche, filtres par catégorie et favoris.
 - Progression, favoris et résultats conservés localement sur l’appareil.
-- Quiz avec corrections expliquées et mises en situation interactives.
-- Application web installable (PWA) et cache hors ligne après une première visite réussie.
+- Quiz avec corrections expliquées et 14 mises en situation interactives, dont 8 cas contextualisés à Bamako (Grand Marché, ACI 2000, Sogoniko, Pont des Martyrs, zones scolaires, pluie et circulation partagée).
+- Rubrique dédiée à 8 bonnes conduites, avec engagements enregistrés localement sur l’appareil.
+- Application web installable (PWA) et cache hors ligne après une première visite réussie, y compris le module pédagogique complémentaire.
 - Interface responsive, navigation clavier et retours accessibles.
 - Aucun compte, aucune collecte de données personnelles et aucune dépendance payante pour les fonctions pédagogiques.
 
