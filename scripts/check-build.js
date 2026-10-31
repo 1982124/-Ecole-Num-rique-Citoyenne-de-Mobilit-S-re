@@ -28,7 +28,7 @@ new vm.Script(sw, { filename: 'public/sw.js' });
 new vm.Script(expansion, { filename: 'public/learning-expansion.js' });
 new vm.Script(immersive, { filename: 'public/immersive-courses.js' });
 if (!html.includes('/immersive-courses.js') || !sw.includes('/immersive-courses.js')) throw new Error('Le module immersif doit être chargé et mis en cache.');
-const immersiveScenes = (immersive.match(/\\{id:'[a-z]+',n:'/g) || []).length;
+const immersiveScenes = (immersive.match(/\{id:'[a-z]+',n:'/g) || []).length;
 if (immersiveScenes !== 8) throw new Error('Le module immersif doit contenir 8 scènes illustrées : ' + immersiveScenes);
 const lessons = (html.match(/\{id:'/g) || []).length;
 const signBlock = expansion.split('const details=')[0];
