@@ -1,0 +1,28 @@
+'use strict';
+const fs = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
+const root = path.resolve(__dirname, '..');
+const required = ['public/index.html','public/config.js','public/sw.js','public/manifest.webmanifest','public/icon.svg','vercel.json','server.js'];
+for (const file of required) {
+  const full = path.join(root, file);
+  if (!fs.existsSync(full) || !fs.statSync(full).isFile()) throw new Error('Fichier requis absent : ' + file);
+}
+const html = fs.readFileSync(path.join(root, 'public/index.html'), 'utf8');
+const config = fs.readFileSync(path.join(root, 'public/config.js'), 'utf8');
+const sw = fs.readFileSync(path.join(root, 'public/sw.js'), 'utf8');
+const vercel = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
+const manifest = JSON.parse(fs.readFileSync(path.join(root, 'public/manifest.webmanifest'), 'utf8'));
+if (!html.includes('id="lesson-grid"') || !html.includes('id="quiz-main"') || !html.includes('id="scenario-main"')) throw new Error('Une section pédagogique essentielle est absente.');
+if (!html.includes('data-tab="scenarios"') || html.includes('socket.io.min.js')) throw new Error('La navigation pédagogique ou la suppression de la dépendance de chat est incorrecte.');
+if (!config.includes('window.APP_CONFIG')) throw new Error('Configuration de marque introuvable.');
+if (vercel.outputDirectory !== 'public' || vercel.buildCommand !== 'npm run build') throw new Error('Configuration de build Vercel incorrecte.');
+if (!manifest.icons || !manifest.icons.length || !sw.includes('addAll(APP_SHELL)')) throw new Error('Configuration PWA incomplète.');
+const scripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map((m) => m[1]).filter((s) => s.trim());
+if (!scripts.length) throw new Error('Script applicatif introuvable.');
+for (const script of scripts) new vm.Script(script, { filename: 'public/index.html:inline-script' });
+new vm.Script(config, { filename: 'public/config.js' });
+new vm.Script(sw, { filename: 'public/sw.js' });
+const lessons = (html.match(/\{id:'/g) || []).length;
+if (lessons < 20) throw new Error('Le catalogue de leçons est trop court : ' + lessons);
+console.log('Contrôles réussis : ' + lessons + ' leçons, quiz, mises en situation, PWA, configuration Vercel et syntaxe JavaScript.');

@@ -1,48 +1,31 @@
-# Mobilité citoyenne - salon de chat temps réel
+# Mali Bolifen Kalanso
 
-Applications de démonstration pour un salon de discussion en temps réel orienté mobilité citoyenne et apprentissage du code de la route.
-
-## Prérequis
-
-- Node.js 18+
-- npm
-
-## Installation
-
-```bash
-npm install
-```
-
-## Démarrage local
-
-```bash
-npm run dev
-```
-
-L’application est accessible sur :
-
-```text
-http://localhost:3001
-```
+**École Numérique et Citoyenne pour une Mobilité Sûre** — application pédagogique de sensibilisation à la sécurité routière, conçue pour être simple à utiliser sur téléphone et ordinateur.
 
 ## Fonctionnalités
+- 21 leçons visuelles avec illustrations SVG originales intégrées au code.
+- Explications en français facile et lecture vocale via la synthèse vocale du navigateur si disponible.
+- Recherche, filtres par catégorie et favoris.
+- Progression, favoris et résultats conservés localement sur l’appareil.
+- Quiz avec corrections expliquées et mises en situation interactives.
+- Application web installable (PWA) et cache hors ligne après une première visite réussie.
+- Interface responsive, navigation clavier et retours accessibles.
+- Aucun compte, aucune collecte de données personnelles et aucune dépendance payante pour les fonctions pédagogiques.
 
-- inscription utilisateur
-- liste des membres connectés
-- messages en temps réel
-- notifications système pour les entrées et sorties
-- interface responsive
+## Développement local
+Prérequis : Node.js 18 ou plus.
 
-## Déploiement
+\`\`\`bash
+npm test
+npm start
+\`\`\`
 
-Ce projet est prêt pour un déploiement de type :
-- backend Node.js + Socket.IO sur Render / Railway / Fly.io
-- frontend statique sur Vercel
+Puis ouvrir http://localhost:3001.
 
-Pour un front statique sur Vercel, il faut connecter le site HTML/CSS/JS dans `public/` et point le frontend vers le backend distant.
+## Déploiement Vercel
+Le site est servi comme application statique depuis le dossier public. La configuration Vercel définit la commande de build et le dossier de sortie. Un push sur la branche reliée à Vercel déclenche normalement un nouveau déploiement automatiquement.
 
-## Important
+Le serveur local sert uniquement à la prévisualisation. L’application pédagogique principale n’a pas besoin de serveur temps réel, de base de données, de variable secrète, de domaine personnalisé ou de plan payant.
 
-- Vercel n’est pas le meilleur choix pour un serveur WebSocket persistant.
-- Le plus fiable est de déployer le backend sur une plateforme Node qui supporte les sockets.
-- Le frontend peut rester sur Vercel ou sur n’importe quel hébergement statique.
+## Limites et validation
+Ces conseils sont des supports pédagogiques de sensibilisation et ne remplacent pas le Code de la route ni les instructions des autorités compétentes au Mali. Les contenus réglementaires doivent être relus et validés par des autorités ou formateurs habilités avant tout usage officiel. La lecture vocale dépend de la voix française installée sur l’appareil. L’interface actuelle est en français ; une version complète en bambara nécessitera une traduction et une validation dédiées.
