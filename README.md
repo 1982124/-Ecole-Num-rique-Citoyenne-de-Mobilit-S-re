@@ -1,6 +1,6 @@
-# Code de la route citoyenne
+# Mobilité citoyenne - salon de chat temps réel
 
-Application de salon de discussion en temps réel basée sur Socket.IO pour le projet de sensibilisation à la mobilité citoyenne.
+Applications de démonstration pour un salon de discussion en temps réel orienté mobilité citoyenne et apprentissage du code de la route.
 
 ## Prérequis
 
@@ -13,76 +13,36 @@ Application de salon de discussion en temps réel basée sur Socket.IO pour le p
 npm install
 ```
 
-## Configuration
-
-Copiez le fichier d’exemple d’environnement :
-
-```bash
-cp .env.example .env
-```
-
-## Développement
+## Démarrage local
 
 ```bash
 npm run dev
 ```
 
-## Production
-
-```bash
-npm run build
-npm start
-```
-
-## Structure du projet
+L’application est accessible sur :
 
 ```text
-.
-├── .env.example
-├── .gitignore
-├── Caddyfile
-├── README.md
-├── package.json
-├── tsconfig.json
-├── src/
-│   ├── index.ts
-│   ├── state.ts
-│   ├── types.ts
-│   └── utils.ts
-└── dist/
+http://localhost:3001
 ```
 
-## Configuration Caddy
+## Fonctionnalités
 
-Exemple minimal :
+- inscription utilisateur
+- liste des membres connectés
+- messages en temps réel
+- notifications système pour les entrées et sorties
+- interface responsive
 
-```caddy
-:80 {
-    reverse_proxy localhost:3003
-}
-```
+## Déploiement
 
-Si vous utilisez un chemin Socket.IO explicite :
+Ce projet est prêt pour un déploiement de type :
+- backend Node.js + Socket.IO sur Render / Railway / Fly.io
+- frontend statique sur Vercel
 
-```caddy
-:80 {
-    handle /socket.io* {
-        reverse_proxy localhost:3003
-    }
+Pour un front statique sur Vercel, il faut connecter le site HTML/CSS/JS dans `public/` et point le frontend vers le backend distant.
 
-    handle {
-        reverse_proxy localhost:3000
-    }
-}
-```
+## Important
 
-## Bonnes pratiques
-
-- Ne laissez pas `path: '/'` pour Socket.IO si un reverse proxy est en place.
-- Réduisez le CORS en production à des origines connues.
-- Pour une vraie application publique, remplacez l’état mémoire par une base de données.
-- Ajoutez une authentification si vous voulez sécuriser les salons et les messages.
-
-## Description du projet
-
-Ce dépôt contient une base solide pour un service de chat en temps réel, pensé pour des environnements de démonstration ou de prototype.
+- Vercel n’est pas le meilleur choix pour un serveur WebSocket persistant.
+- Le plus fiable est de déployer le backend sur une plateforme Node qui supporte les sockets.
+- Le frontend peut rester sur Vercel ou sur n’importe quel hébergement statique.

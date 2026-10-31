@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobilité Citoyenne</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="dot"></span>
+          <h2>Mobilité Citoyenne</h2>
+        </div>
+
+        <div class="panel">
+          <h3>Utilisateurs en ligne</h3>
+          <ul id="user-list"></ul>
+        </div>
+      </aside>
+
+      <main class="chat-panel">
+        <header class="chat-header">
+          <div>
+            <p class="eyebrow">Salon</p>
+            <h1>Code de la route</h1>
+          </div>
+        </header>
+
+        <section id="chat" class="chat" aria-live="polite"></section>
+
+        <form id="join-form" class="join-form">
+          <input id="username" type="text" maxlength="20" placeholder="Entrez votre pseudo" required />
+          <button type="submit">Rejoindre</button>
+        </form>
+
+        <form id="message-form" class="message-form hidden">
+          <input id="message-input" type="text" maxlength="200" placeholder="Écrire un message..." required />
+          <button type="submit">Envoyer</button>
+        </form>
+      </main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
