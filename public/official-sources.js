@@ -20,10 +20,17 @@
     },
     {
       authority: 'Secrétariat général du Gouvernement du Mali (SGG)',
-      title: 'Loi n° 2023-045 du 31 août 2023 régissant la circulation routière',
-      detail: 'Le Journal officiel de 2023 cite cette loi comme texte régissant la circulation routière. Les règles détaillées doivent être recoupées avec les décrets d’application et les modifications ultérieures.',
+      title: 'Loi n° 2023-045 du 31 août 2023 — référence légale',
+      detail: 'La loi est citée dans le décret relatif à la circulation routière. Le PDF lié est le Journal officiel du 29 septembre 2023 contenant cette référence dans le texte réglementaire ; il ne doit pas être confondu avec une copie isolée de la loi.',
       url: 'https://sgg-mali.ml/JO/2023/mali-jo-2023-26.pdf',
-      label: 'Lire le Journal officiel (PDF)'
+      label: 'Vérifier la référence dans le Journal officiel (PDF)'
+    },
+    {
+      authority: 'Journal officiel de la République du Mali — SGG',
+      title: 'Décret n° 2023-0509/PT-RM du 12 septembre 2023',
+      detail: 'Le Journal officiel n° 26 du 29 septembre 2023 publie ce décret relatif aux conditions d’usage des voies ouvertes à la circulation publique et à la mise en circulation des véhicules. Vérifier les textes ultérieurs avant d’en déduire une règle actuelle.',
+      url: 'https://sgg-mali.ml/JO/2023/mali-jo-2023-26.pdf',
+      label: 'Consulter le décret au Journal officiel'
     },
     {
       authority: 'Direction générale des Transports (DGT)',
