@@ -25,7 +25,7 @@
  <div class="hero-art" aria-hidden="true"><svg class="road-scene" viewBox="0 0 300 190" fill="none"><circle cx="229" cy="39" r="25" fill="#F3BD3C"/><path d="M0 162L88 104H212L300 162V190H0Z" fill="#2C6A50"/><path d="M90 190L125 104H175L210 190Z" fill="#53635B"/><path d="M144 118H156L160 137H140Z M137 150H163L169 174H131Z" fill="#F8F6EF"/><path d="M35 109L58 68L81 109Z" fill="#F8F6EF" stroke="#D94A42" stroke-width="7" stroke-linejoin="round"/><path d="M53 96L58 78L63 96Z" fill="#D94A42"/><path d="M58 109V139" stroke="#F8F6EF" stroke-width="5"/><rect x="214" y="72" width="45" height="69" rx="8" fill="#263C31"/><circle cx="236.5" cy="88" r="7" fill="#E94C45"/><circle cx="236.5" cy="106" r="7" fill="#F3BD3C"/><circle cx="236.5" cy="124" r="7" fill="#3FA66D"/></svg></div></div>
 </header>
 <main class="shell">
- <div class="stats" aria-label="Votre progression"><div class="stat"><div class="stat-icon">🚦</div><div><strong id="lesson-count">21</strong><span>notions à découvrir</span></div></div><div class="stat"><div class="stat-icon">⭐</div><div><strong id="done-count">0</strong><span>leçons consultées</span></div></div><div class="stat"><div class="stat-icon">🎯</div><div><strong id="score-count">0%</strong><span>réussite au quiz</span></div></div></div>
+ <div class="stats" aria-label="Votre progression"><div class="stat"><div class="stat-icon">🚦</div><div><strong id="lesson-count">51</strong><span>notions à découvrir</span></div></div><div class="stat"><div class="stat-icon">⭐</div><div><strong id="done-count">0</strong><span>leçons consultées</span></div></div><div class="stat"><div class="stat-icon">🎯</div><div><strong id="score-count">0%</strong><span>réussite au quiz</span></div></div></div>
  <nav class="tabs" aria-label="Navigation principale"><button class="tab active" data-tab="learn" aria-current="page">📖 Apprendre</button><button class="tab" data-tab="quiz">🎯 Quiz</button><button class="tab" data-tab="scenarios">🚦 Situations</button><button class="tab" data-tab="sanctions">⚖️ Sanctions</button></nav>
  <section id="learn" class="view">
   <div class="progress"><div><h3>Ton parcours commence ici</h3><p id="progress-copy">Explore les panneaux et marque les leçons que tu as étudiées.</p></div><div class="ring" id="progress-ring" style="--progress:0%"><span id="progress-pct">0%</span></div></div>
@@ -163,5 +163,7 @@ renderScenario();renderLessons();updateStats();
 var deferredInstall=null,installButton=$('#install-app');window.addEventListener('beforeinstallprompt',function(event){event.preventDefault();deferredInstall=event;installButton.hidden=false;});installButton.addEventListener('click',async function(){if(!deferredInstall)return;deferredInstall.prompt();await deferredInstall.userChoice;deferredInstall=null;installButton.hidden=true;});window.addEventListener('appinstalled',function(){installButton.hidden=true;toast('Application installée sur cet appareil.');});
 if('serviceWorker'in navigator&&location.protocol.indexOf('http')===0){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}
 </script>
+<script src="/learning-expansion.js"></script>
+<script src="/immersive-courses.js"></script>
 </body>
 </html>
