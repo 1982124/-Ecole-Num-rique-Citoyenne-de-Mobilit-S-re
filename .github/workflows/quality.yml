@@ -28,6 +28,8 @@ jobs:
           node --check public/immersive-courses.js
           node --check public/safe-mobility-campaigns.js
           node --check public/permit-categories.js
+          node --check public/bamanankan-glossary.js
+          node --check public/programs.js
           node --check public/sw.js
       - name: Exécuter les contrôles du projet
         run: npm test
