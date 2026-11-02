@@ -18,10 +18,10 @@ const server = http.createServer((req, res) => {
   const pathname = new URL(req.url, 'http://' + (req.headers.host || 'localhost')).pathname;
   if (pathname === '/healthz') {
     res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
-    return res.end(JSON.stringify({ status: 'ok', app: 'Mali Bolifen Kalanso' }));
+    return res.end(JSON.stringify({ status: 'ok', app: 'Mali BOLIFEN KALANSO' }));
   }
   let relative;
-  try { relative = decodeURIComponent(pathname).replace(/^\/+/, ''); } catch { res.writeHead(400); return res.end('Bad request'); }
+  try { relative = decodeURIComponent(pathname).replace(/^\\/+/, ''); } catch { res.writeHead(400); return res.end('Bad request'); }
   if (!relative || relative.endsWith('/')) relative += 'index.html';
   let file = path.resolve(root, relative);
   if (!file.startsWith(root + path.sep) && file !== path.join(root, 'index.html')) {
@@ -36,4 +36,4 @@ const server = http.createServer((req, res) => {
     });
   });
 });
-server.listen(port, () => console.log('Mali Bolifen Kalanso disponible sur http://localhost:' + port));
+server.listen(port, () => console.log('Mali BOLIFEN KALANSO disponible sur http://localhost:' + port));
