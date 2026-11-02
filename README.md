@@ -6,6 +6,7 @@
 Le contenu doit être utile dans toutes les régions du Mali et dans le District de Bamako : centres urbains, périphéries, villages, marchés, abords d’écoles, routes interurbaines, axes ruraux, traversées d’animaux, chantiers, hivernage et déplacements nocturnes. Les huit exemples localisés à Bamako restent des cas particuliers parmi des situations nationales ; ils ne définissent pas à eux seuls le territoire couvert.
 
 ## Fonctionnalités réellement présentes
+- 8 catégories de permis maliens (A1, A2, B1, B, C, D, E, F), avec âges minimaux et exigences médicales tels que repris du décret 2023-0509, article 90.
 - 51 panneaux et repères pédagogiques, dont des schémas de signalisation originaux. Ils constituent un support d’apprentissage et non une reproduction certifiée de l’intégralité des panneaux officiels.
 - Explications en français et lecture vocale via la synthèse vocale disponible sur l’appareil.
 - Recherche, filtres par catégorie et favoris.
