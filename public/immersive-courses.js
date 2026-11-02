@@ -1,4 +1,4 @@
-/* Mali Bolifen Kalanso — cours immersifs illustrés.
+/* Mali BOLIFEN KALANSO — cours immersifs illustrés.
    Scènes pédagogiques originales en SVG : elles ne représentent pas un carrefour réel à l'identique. */
 (function(){
 'use strict';
