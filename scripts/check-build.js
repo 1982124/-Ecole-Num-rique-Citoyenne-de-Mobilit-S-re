@@ -43,6 +43,8 @@ const habitsBlock = (expansion.split('const goodHabits=[')[1] || '').split('];')
 const goodPractices = (habitsBlock.match(/^\['/gm) || []).length;
 if (lessons + extraSigns !== 51) throw new Error('Le catalogue doit contenir exactement 51 panneaux : ' + (lessons + extraSigns));
 if (bamakoCases !== 8) throw new Error('Le module Bamako doit contenir 8 cas : ' + bamakoCases);
+if (nationalCases !== 8) throw new Error('Le module national doit contenir 8 cas hors Bamako : ' + nationalCases);
+if (!expansion.includes('window.scenarios.push(...bamako,...national)')) throw new Error('Les situations nationales ne sont pas chargées.');
 if (goodPractices !== 8) throw new Error('Le module bonnes conduites doit contenir 8 scènes : ' + goodPractices);
 if (lessons < 20) throw new Error('Le catalogue de leçons est trop court : ' + lessons);
-console.log('Contrôles réussis : ' + (lessons + extraSigns) + ' panneaux, ' + bamakoCases + ' cas de Bamako, ' + goodPractices + ' bonnes conduites, quiz, PWA et syntaxe JavaScript.');
+console.log('Contrôles réussis : ' + (lessons + extraSigns) + ' panneaux, ' + bamakoCases + ' cas de Bamako, ' + nationalCases + ' cas nationaux, ' + goodPractices + ' bonnes conduites, quiz, PWA et syntaxe JavaScript.');
