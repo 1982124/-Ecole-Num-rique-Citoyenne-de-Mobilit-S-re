@@ -39,6 +39,8 @@ const signBlock = expansion.split('const details=')[0];
 const extraSigns = (signBlock.match(/^\['/gm) || []).length;
 const bamakoBlock = (expansion.split('const bamako=[')[1] || '').split('];')[0];
 const bamakoCases = (bamakoBlock.match(/^\{title:/gm) || []).length;
+const nationalBlock = (expansion.split('const national=[')[1] || '').split('];')[0];
+const nationalCases = (nationalBlock.match(/^\{title:/gm) || []).length;
 const habitsBlock = (expansion.split('const goodHabits=[')[1] || '').split('];')[0];
 const goodPractices = (habitsBlock.match(/^\['/gm) || []).length;
 if (lessons + extraSigns !== 51) throw new Error('Le catalogue doit contenir exactement 51 panneaux : ' + (lessons + extraSigns));
