@@ -15,14 +15,46 @@
 @media(max-width:850px){.hero{grid-template-columns:1fr}.hero-art{display:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.quiz-layout{grid-template-columns:1fr}.quiz-side{order:-1}.section-head{align-items:start;flex-direction:column}.searchbox{width:100%}}
 @media(max-width:540px){header{padding:17px 16px 25px}.brandmark{width:44px;height:44px;border-radius:13px}.brandname{font-size:18px}.brandtag{font-size:12px}.hero{margin-top:22px;gap:0}.hero h2{font-size:32px}.shell{padding:0 12px 30px}.stats{gap:7px;margin:13px 0 18px}.stat{padding:10px 8px;display:block;text-align:center}.stat-icon{margin:0 auto 5px;width:34px;height:34px;font-size:17px}.stat strong{font-size:18px}.stat span{font-size:10px}.tabs{top:4px;padding:5px;gap:4px}.tab{padding:10px 3px;font-size:12px}.grid{grid-template-columns:1fr 1fr;gap:9px}.lesson{padding:11px;border-radius:16px}.visual{width:65px;height:65px;border-radius:14px}.visual svg{width:59px;height:59px}.lesson h3{font-size:15px;margin:10px 0 4px}.lesson p{font-size:12px}.lesson-actions{flex-direction:column}.lesson-actions .btn{width:100%;padding:8px}.tag{font-size:10px}.section-head h2{font-size:23px}.answers{grid-template-columns:1fr}.quiz-main,.quiz-side,.detail{padding:16px}.footnote{flex-direction:column}.progress{padding:15px}.ring{width:60px;height:60px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+/* Hero canonique MBK — thème sombre, identité Mali et feu tricolore animé */
+:root{color-scheme:dark;--forest:#14b24c;--forest2:#0d8f3b;--gold:#ffcc00;--cream:#f1f3f2;--paper:#fffefa;--ink:#1d3029;--muted:#63736b;--line:#dce5dd;--green:#14b24c;--red:#e03c31;--blue:#0db1d1;--shadow:0 12px 35px #10182018}
+body{background:#f1f3f2}
+.canonical-hero{background:#1a1d24;color:#f1f5f9;padding:22px max(18px,calc((100% - 1120px)/2)) 36px;overflow:hidden}
+.canonical-hero:after{border-color:#ffffff0a;right:-50px;top:-135px}
+.canonical-hero .brandrow,.canonical-hero .hero{max-width:1120px;margin-left:auto;margin-right:auto}
+.canonical-hero .brandmark{background:linear-gradient(90deg,#14b24c 0 33.33%,#ffcc00 33.33% 66.66%,#e03c31 66.66%);box-shadow:0 5px 0 #0005;color:#15191f}
+.canonical-hero .brandtag{color:#cbd5e1}
+.canonical-hero .hero{grid-template-columns:minmax(0,1.35fr) minmax(180px,.65fr);margin-top:30px;gap:32px}
+.canonical-hero .eyebrow{color:#ffcc00}
+.canonical-hero .hero h2{max-width:720px;color:#f8fafc}
+.canonical-hero .hero p{color:#cbd5e1}
+.canonical-hero .btn.primary{background:#ffcc00;color:#171b21}
+.canonical-hero .btn.light{background:#ffffff0d;color:#f8fafc;border:1px solid #ffffff38}
+.canonical-hero .hero-art{min-height:250px;position:relative;overflow:hidden;background:radial-gradient(ellipse at center,#25352f 0,#202832 48%,#1c2028 100%);border:1px solid #ffffff20;border-radius:26px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.signal-halo{position:absolute;width:205px;height:205px;border-radius:50%;background:radial-gradient(circle,#14b24c18 0,transparent 68%);filter:blur(8px)}
+.traffic-signal{position:relative;width:88px;height:198px;padding:13px 14px;border-radius:25px;background:linear-gradient(100deg,#090c11,#303844 48%,#10151c);border:2px solid #66717b;box-shadow:0 15px 35px #0009,inset 0 0 0 3px #ffffff0a;display:flex;flex-direction:column;justify-content:space-between;align-items:center}
+.traffic-signal:before{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);width:13px;height:38px;background:linear-gradient(90deg,#242b34,#68727c,#171c23);border-radius:0 0 4px 4px}
+.signal-light{display:block;width:49px;height:49px;border-radius:50%;background:#151a20;border:3px solid #424b55;box-shadow:inset 0 3px 8px #000b;opacity:.38}
+.signal-red{--lamp:#ff4038;animation:mbk-red 3.6s infinite}
+.signal-amber{--lamp:#ffcc00;animation:mbk-amber 3.6s infinite}
+.signal-green{--lamp:#20e66b;animation:mbk-green 3.6s infinite}
+@keyframes mbk-red{0%,27%{background:var(--lamp);opacity:1;box-shadow:0 0 8px var(--lamp),0 0 24px var(--lamp),inset 0 2px 5px #fff8}28%,100%{background:#351d20;opacity:.42;box-shadow:inset 0 3px 8px #000b}}
+@keyframes mbk-amber{0%,28%,55%,100%{background:#3a3218;opacity:.42;box-shadow:inset 0 3px 8px #000b}29%,54%{background:var(--lamp);opacity:1;box-shadow:0 0 8px var(--lamp),0 0 24px var(--lamp),inset 0 2px 5px #fff8}}
+@keyframes mbk-green{0%,55%{background:#153522;opacity:.42;box-shadow:inset 0 3px 8px #000b}56%,99%{background:var(--lamp);opacity:1;box-shadow:0 0 8px var(--lamp),0 0 24px var(--lamp),inset 0 2px 5px #fff8}}
+.signal-caption{position:relative;margin-top:22px;color:#cbd5e1;font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;text-align:center}
+.canonical-hero .hero-art{aria-hidden:false}
+@media(max-width:850px){.canonical-hero .hero{grid-template-columns:1fr;gap:22px}.canonical-hero .hero-art{min-height:230px;flex-direction:row;gap:32px}.canonical-hero .signal-caption{margin-top:0;max-width:100px;line-height:1.7}}
+@media(max-width:540px){.canonical-hero{padding:17px 16px 27px}.canonical-hero .brandmark{width:44px;height:44px}.canonical-hero .brandname{font-size:17px;line-height:1.25}.canonical-hero .brandtag{font-size:12px}.canonical-hero .hero{margin-top:22px}.canonical-hero .hero h2{font-size:clamp(30px,8vw,36px)}.canonical-hero .actions{display:grid;grid-template-columns:1fr}.canonical-hero .actions .btn{width:100%}.canonical-hero .hero-art{min-height:190px}.traffic-signal{transform:scale(.86);transform-origin:center}}
+@media(prefers-reduced-motion:reduce){.signal-red,.signal-amber,.signal-green{animation:none!important}.signal-green{background:#20e66b;opacity:1;box-shadow:0 0 8px #20e66b,0 0 24px #20e66b}.signal-red,.signal-amber{opacity:.38}}
+
 </style>
 </head>
 <body>
 <div class="topline" aria-hidden="true"></div>
-<header>
+<header class="canonical-hero">
  <div class="brandrow"><div class="brandmark" aria-hidden="true">MBK</div><div><h1 class="brandname" id="brand-title">École Numérique et Citoyenne pour une Mobilité Sûre : Mali Bolifen Kalanso</h1><p class="brandtag">Comprendre la route. Protéger la vie. Avancer ensemble.</p></div></div>
- <div class="hero"><div><div class="eyebrow">Apprendre · Pratiquer · Progresser</div><h2>La sécurité routière, un savoir qui sauve des vies.</h2><p>Découvre les panneaux, entraîne-toi avec des quiz et avance à ton rythme. Une expérience pensée pour apprendre simplement, y compris sur téléphone.</p><div class="actions"><button class="btn primary" data-goto="learn">📘 Commencer à apprendre →</button><button class="btn light" data-goto="quiz">🎯 Tester mes connaissances</button><button class="btn light" id="install-app" hidden>⬇ Installer l’application</button></div></div>
- <div class="hero-art" aria-hidden="true"><svg class="road-scene" viewBox="0 0 300 190" fill="none"><circle cx="229" cy="39" r="25" fill="#F3BD3C"/><path d="M0 162L88 104H212L300 162V190H0Z" fill="#2C6A50"/><path d="M90 190L125 104H175L210 190Z" fill="#53635B"/><path d="M144 118H156L160 137H140Z M137 150H163L169 174H131Z" fill="#F8F6EF"/><path d="M35 109L58 68L81 109Z" fill="#F8F6EF" stroke="#D94A42" stroke-width="7" stroke-linejoin="round"/><path d="M53 96L58 78L63 96Z" fill="#D94A42"/><path d="M58 109V139" stroke="#F8F6EF" stroke-width="5"/><rect x="214" y="72" width="45" height="69" rx="8" fill="#263C31"/><circle cx="236.5" cy="88" r="7" fill="#E94C45"/><circle cx="236.5" cy="106" r="7" fill="#F3BD3C"/><circle cx="236.5" cy="124" r="7" fill="#3FA66D"/></svg></div></div>
+ <div class="hero"><div class="hero-copy"><div class="eyebrow">Apprendre · Pratiquer · Progresser</div><h2>La sécurité routière, un savoir qui sauve des vies.</h2><p>Découvre les panneaux, entraîne-toi avec des quiz et avance à ton rythme. Une expérience pensée pour apprendre simplement, y compris sur téléphone.</p><div class="actions"><button class="btn primary" data-goto="learn">📘 Commencer à apprendre</button><button class="btn light" data-goto="quiz">🎯 Tester mes connaissances</button><button class="btn light" id="install-app" hidden>⬇ Installer l’application</button></div></div>
+ <div class="hero-art" role="img" aria-label="Feu tricolore : les lumières rouge, orange et verte s’allument successivement"><div class="signal-halo" aria-hidden="true"></div><div class="traffic-signal" aria-hidden="true"><span class="signal-light signal-red"></span><span class="signal-light signal-amber"></span><span class="signal-light signal-green"></span></div><div class="signal-caption">Observer · Anticiper · Protéger</div></div></div>
 </header>
 <main class="shell">
  <div class="stats" aria-label="Votre progression"><div class="stat"><div class="stat-icon">🚦</div><div><strong id="lesson-count">51</strong><span>notions à découvrir</span></div></div><div class="stat"><div class="stat-icon">⭐</div><div><strong id="done-count">0</strong><span>leçons consultées</span></div></div><div class="stat"><div class="stat-icon">🎯</div><div><strong id="score-count">0%</strong><span>réussite au quiz</span></div></div></div>
