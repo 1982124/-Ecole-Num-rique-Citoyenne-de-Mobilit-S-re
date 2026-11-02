@@ -21,7 +21,7 @@ const server = http.createServer((req, res) => {
     return res.end(JSON.stringify({ status: 'ok', app: 'Mali BOLIFEN KALANSO' }));
   }
   let relative;
-  try { relative = decodeURIComponent(pathname).replace(/^\\/+/, ''); } catch { res.writeHead(400); return res.end('Bad request'); }
+  try { relative = decodeURIComponent(pathname).replace(/^\/+/, ''); } catch { res.writeHead(400); return res.end('Bad request'); }
   if (!relative || relative.endsWith('/')) relative += 'index.html';
   let file = path.resolve(root, relative);
   if (!file.startsWith(root + path.sep) && file !== path.join(root, 'index.html')) {
