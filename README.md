@@ -48,3 +48,14 @@ Le site est servi comme application statique depuis le dossier public. Le serveu
 
 ## Avertissement
 Les contenus sont des supports pédagogiques de sensibilisation et ne remplacent ni le Code de la route ni les instructions des autorités compétentes au Mali. Aucun certificat de cette application ne doit être présenté comme un permis ou une certification officielle sans habilitation explicite.
+
+## Parcours particuliers et ONG
+- Un particulier peut consulter le parcours de découverte gratuit et préparer une demande d’accès au futur abonnement individuel accompagné.
+- Les ONG, associations et collectivités disposent de deux modèles de programmes de sensibilisation (local et multi-sites), à adapter aux publics et aux zones d’intervention.
+- Le formulaire actuel prépare un résumé téléchargeable ou copiable sur l’appareil. Il ne transmet pas encore la demande à un serveur : aucun abonnement payant, compte ou paiement n’est activé. L’activation réelle nécessite authentification, base de données, gestion des consentements et intégration d’un moyen de paiement choisi par le projet.
+
+## Dictionnaire français–bamanankan de la mobilité
+- Un premier lexique interactif distingue les formes relevées dans des sources lexicographiques des notions techniques dont la traduction reste à construire.
+- Les formes attestées renvoient à Bamadaba ; les notions telles que sécurité routière, code de la route, conducteur, piéton, casque, ceinture, panneau, priorité et freinage restent volontairement sans traduction jusqu’à validation.
+- Le Bamanankan est une langue tonale : les tons, caractères ɛ/ɔ/ɲ/ŋ, variantes et exemples doivent être préservés. Une traduction approfondie des leçons, quiz, sanctions et situations doit être réalisée et relue par des locuteurs compétents avant publication.
+- Référence principale : https://www.mali-pense.net/bm/lexicon/index.htm (Bamadaba, version de travail décembre 2025, explicitement non officielle). Ressource complémentaire : https://dictionary.ankataa.com/.
