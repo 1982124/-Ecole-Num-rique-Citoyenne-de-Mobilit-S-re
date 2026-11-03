@@ -54,7 +54,7 @@ document.querySelector('#imm-feedback').innerHTML='<div class="imm-feedback"><st
 document.querySelector('#imm-next').disabled=false;
 }));
 document.querySelector('#imm-next').onclick=()=>{
-if(!completed.has(id)){let stats={done:0,correct:0};try{stats=JSON.parse(localStorage.getItem('mbk_immersive_stats')||'{"done":0,"correct":0}');}catch(e){}stats.done=(Number(stats.done)||0)+1;if(lastAnswerCorrect)stats.correct=(Number(stats.correct)||0)+1;try{localStorage.setItem('mbk_immersive_stats',JSON.stringify(stats));}catch(e){}}completed.add(id);try{localStorage.setItem('mbk_immersive_done',JSON.stringify([...completed]));}catch(e){}window.dispatchEvent(new Event('mbk:progress-updated'));
+if(!completed.has(id)){let stats={done:0,correct:0,scored:0};try{stats=JSON.parse(localStorage.getItem('mbk_immersive_stats')||'{"done":0,"correct":0,"scored":0}');}catch(e){}stats.done=(Number(stats.done)||0)+1;stats.scored=(Number(stats.scored)||0)+1;if(lastAnswerCorrect)stats.correct=(Number(stats.correct)||0)+1;try{localStorage.setItem('mbk_immersive_stats',JSON.stringify(stats));}catch(e){}}completed.add(id);try{localStorage.setItem('mbk_immersive_done',JSON.stringify([...completed]));}catch(e){}window.dispatchEvent(new Event('mbk:progress-updated'));
 const card=document.querySelector('[data-course="'+id+'"]');if(card){card.classList.add('imm-completed');card.querySelector('.imm-open').textContent='✓ Leçon terminée';}
 stage.innerHTML='<div class="imm-feedback"><strong>Leçon validée !</strong> Tu peux explorer une autre scène et continuer ton entraînement.</div>';
 };
