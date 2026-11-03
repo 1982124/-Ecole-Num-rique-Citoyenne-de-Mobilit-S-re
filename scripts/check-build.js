@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const root = path.resolve(__dirname, '..');
-const required = ['public/index.html','public/config.js','public/country-profile.js','public/sw.js','public/manifest.webmanifest','public/icon.svg','public/learning-expansion.js','public/immersive-courses.js','public/safe-mobility-campaigns.js','public/permit-categories.js','public/bamanankan-glossary.js','public/programs.js','vercel.json','server.js'];
+const required = ['public/index.html','public/config.js','public/country-profile.js','public/official-sources.js','public/sw.js','public/manifest.webmanifest','public/icon.svg','public/learning-expansion.js','public/immersive-courses.js','public/safe-mobility-campaigns.js','public/permit-categories.js','public/bamanankan-glossary.js','public/programs.js','vercel.json','server.js'];
 for (const file of required) {
   const full = path.join(root, file);
   if (!fs.existsSync(full) || !fs.statSync(full).isFile()) throw new Error('Fichier requis absent : ' + file);
@@ -11,6 +11,7 @@ for (const file of required) {
 const html = fs.readFileSync(path.join(root, 'public/index.html'), 'utf8');
 const config = fs.readFileSync(path.join(root, 'public/config.js'), 'utf8');
 const countryProfile = fs.readFileSync(path.join(root, 'public/country-profile.js'), 'utf8');
+const officialSources = fs.readFileSync(path.join(root, 'public/official-sources.js'), 'utf8');
 const sw = fs.readFileSync(path.join(root, 'public/sw.js'), 'utf8');
 const expansion = fs.readFileSync(path.join(root, 'public/learning-expansion.js'), 'utf8');
 const immersive = fs.readFileSync(path.join(root, 'public/immersive-courses.js'), 'utf8');
@@ -24,6 +25,7 @@ if (!html.includes('id="lesson-grid"') || !html.includes('id="quiz-main"') || !h
 if (!html.includes('data-tab="scenarios"') || html.includes('socket.io.min.js')) throw new Error('La navigation pédagogique ou la suppression de la dépendance de chat est incorrecte.');
 if (!config.includes('window.APP_CONFIG')) throw new Error('Configuration de marque introuvable.');
 if (!html.includes('/country-profile.js') || !sw.includes('/country-profile.js') || !countryProfile.includes('window.MOBILITY_COUNTRY_PROFILE') || !countryProfile.includes("code:'ML'")) throw new Error('Le profil national malien doit être chargé et mis en cache.');
+if (!html.includes('/official-sources.js') || !sw.includes('/official-sources.js') || !officialSources.includes('dgt.gouv.ml') || !officialSources.includes('sgg-mali.ml')) throw new Error('Les références officielles maliennes doivent être chargées et mises en cache.');
 if (!html.includes('who-home-title') || !html.includes('225 482') || !html.includes('19 %') || !html.includes('OMS')) throw new Error('Les résultats OMS doivent apparaître sur la page d’accueil.');
 if (vercel.outputDirectory !== 'public' || vercel.buildCommand !== 'npm run build') throw new Error('Configuration de build Vercel incorrecte.');
 if (!manifest.icons || !manifest.icons.length || !sw.includes('addAll(APP_SHELL)')) throw new Error('Configuration PWA incomplète.');
@@ -32,6 +34,7 @@ if (!scripts.length) throw new Error('Script applicatif introuvable.');
 for (const script of scripts) new vm.Script(script, { filename: 'public/index.html:inline-script' });
 new vm.Script(config, { filename: 'public/config.js' });
 new vm.Script(countryProfile, { filename: 'public/country-profile.js' });
+new vm.Script(officialSources, { filename: 'public/official-sources.js' });
 new vm.Script(sw, { filename: 'public/sw.js' });
 new vm.Script(expansion, { filename: 'public/learning-expansion.js' });
 new vm.Script(immersive, { filename: 'public/immersive-courses.js' });
