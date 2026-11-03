@@ -29,3 +29,14 @@ window.MOBILITY_COUNTRY_PROFILE = Object.freeze({
  document.documentElement.style.setProperty('--red',colors[2]);
  document.querySelectorAll('.topline,.brandmark').forEach(function(el){el.style.background=gradient;});
 })();
+/* Chargement du module visuel national : galerie de photographies locales (licences vérifiées par image).
+   Le module est ajouté au cache PWA : l’onglet reste disponible hors ligne ; seules les photos distantes demandent Internet. */
+(function(){
+ function loadGallery(){
+ if(document.querySelector('script[data-mbk="bamako-gallery"]'))return;
+ var s=document.createElement('script');
+ s.src='/bamako-gallery.js';s.async=true;s.dataset.mbk='bamako-gallery';
+ document.head.appendChild(s);
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadGallery);else loadGallery();
+})();
