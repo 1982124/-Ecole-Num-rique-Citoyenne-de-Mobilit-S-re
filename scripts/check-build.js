@@ -80,26 +80,27 @@ if (!expansion.includes('window.scenarios.push(...bamako,...national)')) throw n
 if (goodPractices !== 8) throw new Error('Le module bonnes conduites doit contenir 8 scènes : ' + goodPractices);
 if (lessons < 20) throw new Error('Le catalogue de leçons est trop court : ' + lessons);
 // Verrou définitif sur le nom officiel « Mali BOLIFEN KALANSO ».
-// L'ancienne graphie « Bolifenko Kalanso » est interdite dans TOUT le dépôt, quel que soit le fichier.
-// Balayage récursif de l'ensemble des fichiers texte du dépôt (hors node_modules, .git et fichiers binaires).
-const TEXT_EXTENSIONS = new Set(['.js','.html','.css','.json','.md','.txt','.yml','.yaml','.webmanifest','.svg','.xml']);
+// Toute graphie alternative du nom est interdite dans TOUT le dépôt, quel que soit le fichier.
+// Balayage récursif de l'ensemble des fichiers texte (hors node_modules, .git et archives de résultats).
+const FORBIDDEN_NAME = /BOLIFENKO\s+KALANSO/i;
+const TEXT_EXTENSIONS = new Set(['.js', '.html', '.css', '.json', '.md', '.txt', '.yml', '.yaml', '.webmanifest', '.svg', '.xml']);
 const SKIP_DIRS = new Set(['node_modules', '.git', 'docs/resultats-tests']);
 let scannedFiles = 0;
-function scanForOldSpelling(dir) {
+function scanForForbiddenName(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     if (entry.isDirectory()) {
       if (SKIP_DIRS.has(entry.name)) continue;
-      scanForOldSpelling(path.join(dir, entry.name));
+      scanForForbiddenName(path.join(dir, entry.name));
     } else if (TEXT_EXTENSIONS.has(path.extname(entry.name).toLowerCase())) {
       scannedFiles++;
       const content = fs.readFileSync(path.join(dir, entry.name), 'utf8');
-      if (/BOLIFENKO\s+KALANSO/i.test(content)) throw new Error('Ancienne graphie « Bolifenko Kalanso » interdite détectée dans : ' + entry.name + ' — le nom officiel est « Mali BOLIFEN KALANSO » (décision CTO du 3 novembre 2026, verrou définitif).');
+      if (FORBIDDEN_NAME.test(content)) throw new Error('Graphie interdite du nom du projet détectée dans : ' + entry.name + ' — le nom officiel unique est « Mali BOLIFEN KALANSO » (verrou définitif, décision CTO du 3 novembre 2026). Corrige le fichier puis relance les contrôles.');
     }
   }
 }
-scanForOldSpelling(root);
-// Les fichiers de marque doivent aussi porter le nom officiel exact.
-const brandingFiles = ['README.md','package.json','public/config.js','public/index.html','public/manifest.webmanifest','server.js'];
+scanForForbiddenName(root);
+// Les fichiers de marque doivent toujours porter le nom officiel exact.
+const brandingFiles = ['README.md', 'package.json', 'public/config.js', 'public/index.html', 'public/manifest.webmanifest', 'server.js'];
 for (const file of brandingFiles) {
   const content = fs.readFileSync(path.join(root, file), 'utf8');
   if (!content.includes('Mali BOLIFEN KALANSO')) throw new Error('Nom officiel « Mali BOLIFEN KALANSO » absent de : ' + file);
