@@ -59,3 +59,41 @@ Les contenus sont des supports pédagogiques de sensibilisation et ne remplacent
 - Les formes attestées renvoient à Bamadaba ; les notions telles que sécurité routière, code de la route, conducteur, piéton, casque, ceinture, panneau, priorité et freinage restent volontairement sans traduction jusqu’à validation.
 - Le Bamanankan est une langue tonale : les tons, caractères ɛ/ɔ/ɲ/ŋ, variantes et exemples doivent être préservés. Une traduction approfondie des leçons, quiz, sanctions et situations doit être réalisée et relue par des locuteurs compétents avant publication.
 - Référence principale : https://www.mali-pense.net/bm/lexicon/index.htm (Bamadaba, version de travail décembre 2025, explicitement non officielle). Ressource complémentaire : https://dictionary.ankataa.com/.
+
+
+## Architecture de duplication nationale — modèle Afrique
+
+Cette application est le **pilote malien** et le socle de référence pour créer des éditions nationales indépendantes. Il ne suffit pas de remplacer le drapeau ou le nom : chaque édition doit avoir son propre contenu national validé.
+
+### Socle commun à conserver
+- navigation, composants pédagogiques, quiz, progression locale et accessibilité ;
+- fonctionnement PWA, cache hors ligne, responsive et contrôles de qualité ;
+- structure des leçons, scénarios, panneaux, quiz, bonnes pratiques et références ;
+- principes de protection des données et d’avertissement pédagogique.
+
+### Profil national à remplacer
+`public/country-profile.js` définit le code ISO, le nom, les langues, la devise, les couleurs, les autorités, les sources, les lieux, les contextes routiers et les exigences de validation. `public/config.js` sélectionne le profil actif.
+
+### Pack national obligatoire
+1. textes légaux, règles, permis, sanctions et procédures avec articles, dates d’effet et historique ;
+2. panneaux et quiz conformes au référentiel national ;
+3. langues nationales et traductions relues par des locuteurs compétents ;
+4. scénarios réalistes propres aux villes, campagnes, routes et usages du pays ;
+5. photographies locales authentiques, dignes et sous licences vérifiées ;
+6. contacts d’urgence confirmés par les autorités.
+
+### Garde-fous
+- ne jamais présenter une statistique OMS régionale comme une statistique nationale ;
+- ne jamais copier les règles d’un pays vers un autre ;
+- ne jamais légender une image générique comme locale ;
+- marquer les sources, images et traductions non vérifiées « à valider » ;
+- faire passer les tests et une revue humaine nationale avant publication.
+
+### Procédure de duplication
+1. Dupliquer le dépôt dans un dépôt distinct.
+2. Remplacer le profil et les packs nationaux ; conserver le socle commun.
+3. Exécuter `npm test`, puis tester sur mobile et hors ligne.
+4. Faire valider le contenu par des spécialistes et autorités du pays.
+5. Créer un projet Vercel distinct et vérifier l’aperçu avant publication.
+
+**État actuel :** le profil malien est initialisé et la procédure de duplication documentée. Les contenus pédagogiques existants restent maliens : ils ne sont pas automatiquement adaptés à un autre pays. Toute nouvelle édition exige son pack national complet.
