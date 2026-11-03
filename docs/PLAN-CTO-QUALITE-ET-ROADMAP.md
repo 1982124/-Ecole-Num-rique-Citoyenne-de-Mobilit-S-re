@@ -1,4 +1,4 @@
-# Plan CTO — fiabilisation et évolution de Mali Bolifenko Kalanso
+# Plan CTO — fiabilisation et évolution de MALI  BOLIFEN KALANSO MALI
 
 > Document de pilotage. Il décrit les travaux à réaliser ; il ne prétend pas que les fonctions listées sont déjà implémentées.
 > Périmètre initial : PWA statique existante, branche `main`. Aucun service payant, aucune migration de production et aucun changement d'architecture majeur dans cette phase.
