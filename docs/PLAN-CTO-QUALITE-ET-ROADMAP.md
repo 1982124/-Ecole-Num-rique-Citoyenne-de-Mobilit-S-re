@@ -1,4 +1,4 @@
-# Plan CTO — fiabilisation et évolution de Mali BOLIFEN KALANSO
+# Plan CTO — fiabilisation et évolution de Mali Bolifenko Kalanso
 
 > Document de pilotage. Il décrit les travaux à réaliser ; il ne prétend pas que les fonctions listées sont déjà implémentées.
 > Périmètre initial : PWA statique existante, branche `main`. Aucun service payant, aucune migration de production et aucun changement d'architecture majeur dans cette phase.
@@ -16,7 +16,7 @@
 ## État de départ connu
 
 - Application web statique servie depuis `public/`, installable comme PWA.
-- `npm test` et `npm run build` exécutent trois contrôles en chaîne : `scripts/check-build.js`, `scripts/check-bamanankan.js` et `scripts/check-pwa.js`.
+- `npm test` et `npm run build` exécutent actuellement trois contrôles en chaîne : `scripts/check-build.js`, `scripts/check-bamanankan.js` et `scripts/check-pwa.js`.
 - `check-build.js` vérifie les fichiers requis, la syntaxe JavaScript, des points d'ancrage pédagogiques, la configuration Vercel et certains contenus ; les deux contrôles complémentaires protègent les invariants du lexique/campagnes Bamanankan et les ressources du manifeste/service worker PWA.
 - Ces contrôles sont statiques : ils ne remplacent pas les tests manuels dans un navigateur réel, sur téléphone, après installation et en mode avion.
 - Le service worker utilise une liste de ressources statiques et un cache versionné. Le comportement hors ligne doit encore être vérifié dans un vrai navigateur après installation et sur téléphone.
@@ -24,6 +24,7 @@
 - Les progrès sont locaux au navigateur ; aucun compte ni synchronisation multi-appareils n'est établi.
 - Les fonctions de gestion multi-auto-écoles, de suivi moniteur/candidat et de paiement ne sont pas disponibles.
 - Les traductions Peul/Bamanankan proposées par le pipeline de la PR #12 sont un flux de brouillons à réviser, pas une traduction prête à publier.
+- Le dépôt contient plusieurs PR ouvertes. Les PR #3, #11, #12 et #13 sont à examiner individuellement ; aucune ne doit être réputée fusionnée ni déployée sans vérification de son état et de ses contrôles.
 
 ## Priorités et lots de travail
 
@@ -151,6 +152,7 @@
 | Progression | Persistance locale après rechargement | Oui |
 | PWA | Installation, cache, mode avion après première visite | Oui avant release |
 | Mobile | 360/375/390 px sans débordement | Oui avant release |
+
 | Accessibilité | Clavier, focus visible, zoom, réduction animations | Oui avant release |
 | Juridique | Source primaire et date pour chaque règle | Oui pour publier le contenu concerné |
 
@@ -164,7 +166,7 @@
 6. **Lot 5 :** architecture multi-acteurs après décision coût/confidentialité (P5).
 7. **Lot 6 :** pilote terrain et modèle économique (P6).
 
-Une PR ne passe à l'étape suivante que si ses tests passent, si le diff est relu et si aucune régression n'est ouverte. Les PR existantes doivent être examinées et comparées à ce plan avant fusion ; aucune fusion automatique n'est autorisée par ce document.
+Une PR ne passe à l'étape suivante que si ses tests passent, si le diff est relu et si aucune régression n'est ouverte. Les PR existantes #11 et #12 doivent être examinées et comparées à ce plan avant fusion ; aucune fusion automatique n'est autorisée par ce document.
 
 ## Sources de référence à maintenir à jour
 
@@ -174,4 +176,4 @@ Une PR ne passe à l'étape suivante que si ses tests passent, si le diff est re
 - Toute source lexicographique Bamanankan reste une aide linguistique, pas une validation institutionnelle des termes routiers.
 
 ---
-Dernière mise à jour : 3 novembre 2026 (consolidation du socle enrichi — OMS, profil national, sources officielles, progression dynamique, galerie Bamako — dans une PR unique relisible).
+Dernière mise à jour : 3 novembre 2026 (état du dépôt vérifié après fusion des contrôles Bamanankan/PWA).
