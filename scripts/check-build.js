@@ -35,6 +35,8 @@ new vm.Script(countryProfile, { filename: 'public/country-profile.js' });
 new vm.Script(sw, { filename: 'public/sw.js' });
 new vm.Script(expansion, { filename: 'public/learning-expansion.js' });
 new vm.Script(immersive, { filename: 'public/immersive-courses.js' });
+const openCourseBlock = immersive.split('function openCourse(id){')[1]?.split('\n}\nsection.addEventListener')[0] || '';
+if (!openCourseBlock.includes("delete stage.dataset.answered;")) throw new Error('Le module immersif doit réinitialiser la réponse à chaque ouverture de scène.');
 new vm.Script(safeMobility, { filename: 'public/safe-mobility-campaigns.js' });
 new vm.Script(permitCategories, { filename: 'public/permit-categories.js' });
 new vm.Script(glossary, { filename: 'public/bamanankan-glossary.js' });
