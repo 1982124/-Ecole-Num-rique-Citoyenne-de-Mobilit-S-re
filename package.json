@@ -7,8 +7,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "build": "node scripts/check-build.js",
-    "test": "node scripts/check-build.js"
+    "build": "node scripts/check-build.js && node scripts/check-pwa.js",
+    "test": "node scripts/check-build.js && node scripts/check-pwa.js"
   },
   "engines": { "node": ">=18" }
 }
