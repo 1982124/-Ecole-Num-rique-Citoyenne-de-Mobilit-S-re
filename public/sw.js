@@ -1,6 +1,6 @@
 'use strict';
-const CACHE_NAME = 'mbk-shell-v12';
-const APP_SHELL = ['/', '/config.js', '/country-profile.js', '/official-sources.js', '/bamako-gallery.js', '/manifest.webmanifest', '/icon.svg', '/learning-expansion.js', '/immersive-courses.js', '/safe-mobility-campaigns.js', '/permit-categories.js', '/bamanankan-glossary.js', '/programs.js'];
+const CACHE_NAME = 'mbk-shell-v9';
+const APP_SHELL = ['/', '/config.js', '/manifest.webmanifest', '/icon.webmanifest', '/icon.svg', '/learning-expansion.js', '/immersive-courses.js', '/safe-mobility-campaigns.js', '/permit-categories.js', '/bamanankan-glossary.js', '/programs.js'];
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()));
 });
