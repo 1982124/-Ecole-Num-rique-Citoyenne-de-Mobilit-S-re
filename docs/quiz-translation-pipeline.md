@@ -24,7 +24,7 @@ Ne jamais placer ces secrets dans le code source, dans `public/`, dans un commit
 Examiner d'abord le schéma existant, puis appliquer la migration
 `supabase/migrations/202611030001_quiz_translations.sql` dans le projet Supabase de l'application.
 
-La migration crée le référentiel `quiz_questions` s'il n'existe pas et ajoute `quiz_translations`. Si une table `quiz_questions` existe déjà, comparer ses colonnes/types à la migration avant exécution ; ne pas remplacer une table existante.
+La migration crée le référentiel `quiz_questions` s'il n'existe pas et ajoute `quiz_translations`. Elle importe aussi les 14 questions actuellement présentes dans le quiz statique, en `draft`, sans écraser les numéros déjà existants. Si une table `quiz_questions` existe déjà, comparer ses colonnes/types à la migration avant exécution ; ne pas remplacer une table existante.
 
 RLS est activé. Les utilisateurs publics ne peuvent lire que les questions publiées et les traductions approuvées. Les écritures du pipeline sont faites avec la clé serveur et ne doivent jamais être appelées depuis le navigateur.
 
