@@ -1,6 +1,7 @@
 'use strict';
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 const root = path.resolve(__dirname, '..');
 const publicDir = path.join(root, 'public');
 function read(file) {
@@ -24,7 +25,7 @@ for (const icon of manifest.icons) {
 }
 const shellMatch = sw.match(/const APP_SHELL = (\[[\s\S]*?\]);/);
 assert(shellMatch, 'liste APP_SHELL introuvable');
-const shell = JSON.parse(shellMatch[1]);
+const shell = vm.runInNewContext(shellMatch[1]);
 assert(shell.includes('/'), 'la page d’accueil doit être précachée');
 assert(new Set(shell).size === shell.length, 'APP_SHELL ne doit pas contenir de doublons');
 for (const asset of shell) {
