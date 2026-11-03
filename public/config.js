@@ -15,11 +15,12 @@ window.BACKEND_URL = window.APP_CONFIG.backendUrl;
 window.APP_TITLE = window.APP_CONFIG.brandBase + ' : ' + window.APP_CONFIG.countrySuffix;
 /*
  * Couture provisoire (Strangler Fig) : chargeur des modules de données nationales.
- * Regroupe profil pays, sources officielles, constats OMS et galerie Bamako.
+ * Regroupe profil pays, sources officielles, constats OMS, galerie Bamako,
+ * examen blanc d'entraînement et familles de panneaux complémentaires.
  * À remplacer par des balises <script> explicites dans index.html lors du lot suivant.
  */
 (function () {
-  var modules = ['/country-profile.js', '/official-sources.js', '/who-road-facts.js', '/bamako-gallery.js'];
+  var modules = ['/country-profile.js', '/official-sources.js', '/who-road-facts.js', '/bamako-gallery.js', '/quiz-exam.js', '/signs-extra.js'];
   function boot() {
     modules.forEach(function (src) {
       var s = document.createElement('script');
