@@ -39,6 +39,8 @@ let completed=new Set();try{completed=new Set(JSON.parse(localStorage.getItem('m
 function openCourse(id){
 const x=lessons.find(v=>v.id===id);if(!x)return;
 const stage=document.querySelector('#imm-stage');
+// Réinitialiser l’état de réponse à chaque ouverture : sinon une réponse précédente bloque les scènes suivantes.
+delete stage.dataset.answered;
 stage.innerHTML='<article class="imm-detail"><div class="imm-detail-art">'+illustration(x)+'</div><div class="imm-detail-content"><span class="imm-tag">'+x.place+'</span><h2>'+x.title+'</h2><p>'+x.intro+'</p><div class="imm-steps"><div class="imm-step"><b>1 · COMPRENDRE</b><p>'+x.rule+'</p></div><div class="imm-step"><b>2 · AGIR</b><p>'+x.reflex+'</p></div><div class="imm-step"><b>3 · MÉMORISER</b><p>Observe, anticipe et protège les usagers les plus vulnérables.</p></div></div><button class="btn outline" id="imm-listen">🔊 Écouter le cours</button><div class="imm-question"><h3>🎯 À toi de décider</h3><p>'+x.question+'</p><div class="imm-answers">'+x.answers.map((a,i)=>'<button class="imm-answer" data-imm-answer="'+i+'">'+String.fromCharCode(65+i)+'. '+a+'</button>').join('')+'</div><div id="imm-feedback" aria-live="polite"></div></div><div class="imm-detail-actions"><button class="btn outline" id="imm-close">← Retour aux scènes</button><button class="btn dark" id="imm-next" disabled>Valider la leçon ✓</button></div></div></article>';
 stage.scrollIntoView({behavior:'smooth',block:'start'});
 document.querySelector('#imm-listen').onclick=()=>{if(typeof window.readAloud==='function')window.readAloud(x.title+'. '+x.intro+'. '+x.rule+'. '+x.reflex);};
