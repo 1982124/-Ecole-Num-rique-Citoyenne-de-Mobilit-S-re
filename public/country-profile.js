@@ -22,5 +22,10 @@ window.MOBILITY_COUNTRY_PROFILE = Object.freeze({
  const appName=document.querySelector('meta[name="application-name"]');if(appName)appName.content=p.editionName;
  const theme=document.querySelector('meta[name="theme-color"]');if(theme)theme.content=p.theme.colors[0];
  const colors=p.theme.colors,gradient='linear-gradient(90deg,'+colors[0]+' 0 33.33%,'+colors[1]+' 33.33% 66.66%,'+colors[2]+' 66.66% 100%)';
+ document.documentElement.style.setProperty('--forest',colors[0]);
+ document.documentElement.style.setProperty('--forest2',colors[0]);
+ document.documentElement.style.setProperty('--green',colors[0]);
+ document.documentElement.style.setProperty('--gold',colors[1]);
+ document.documentElement.style.setProperty('--red',colors[2]);
  document.querySelectorAll('.topline,.brandmark').forEach(function(el){el.style.background=gradient;});
 })();
