@@ -3,13 +3,17 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const root = path.resolve(__dirname, '..');
-const required = ['public/index.html','public/config.js','public/sw.js','public/manifest.webmanifest','public/icon.svg','public/learning-expansion.js','public/immersive-courses.js','public/safe-mobility-campaigns.js','public/permit-categories.js','public/bamanankan-glossary.js','public/programs.js','vercel.json','server.js'];
+const required = ['public/index.html','public/config.js','public/country-profile.js','public/official-sources.js','public/who-road-facts.js','public/bamako-gallery.js','public/sw.js','public/manifest.webmanifest','public/icon.svg','public/learning-expansion.js','public/immersive-courses.js','public/safe-mobility-campaigns.js','public/permit-categories.js','public/bamanankan-glossary.js','public/programs.js','vercel.json','server.js'];
 for (const file of required) {
   const full = path.join(root, file);
   if (!fs.existsSync(full) || !fs.statSync(full).isFile()) throw new Error('Fichier requis absent : ' + file);
 }
 const html = fs.readFileSync(path.join(root, 'public/index.html'), 'utf8');
 const config = fs.readFileSync(path.join(root, 'public/config.js'), 'utf8');
+const countryProfile = fs.readFileSync(path.join(root, 'public/country-profile.js'), 'utf8');
+const officialSources = fs.readFileSync(path.join(root, 'public/official-sources.js'), 'utf8');
+const whoRoadFacts = fs.readFileSync(path.join(root, 'public/who-road-facts.js'), 'utf8');
+const bamakoGallery = fs.readFileSync(path.join(root, 'public/bamako-gallery.js'), 'utf8');
 const sw = fs.readFileSync(path.join(root, 'public/sw.js'), 'utf8');
 const expansion = fs.readFileSync(path.join(root, 'public/learning-expansion.js'), 'utf8');
 const immersive = fs.readFileSync(path.join(root, 'public/immersive-courses.js'), 'utf8');
@@ -22,12 +26,24 @@ const manifest = JSON.parse(fs.readFileSync(path.join(root, 'public/manifest.web
 if (!html.includes('id="lesson-grid"') || !html.includes('id="quiz-main"') || !html.includes('id="scenario-main"')) throw new Error('Une section pédagogique essentielle est absente.');
 if (!html.includes('data-tab="scenarios"') || html.includes('socket.io.min.js')) throw new Error('La navigation pédagogique ou la suppression de la dépendance de chat est incorrecte.');
 if (!config.includes('window.APP_CONFIG')) throw new Error('Configuration de marque introuvable.');
+if (!config.includes('/country-profile.js') || !config.includes('/official-sources.js') || !config.includes('/who-road-facts.js') || !config.includes('/bamako-gallery.js')) throw new Error('Le chargeur des modules de données nationales est absent de la configuration.');
+if (!countryProfile.includes('window.MOBILITY_COUNTRY_PROFILE') || !countryProfile.includes("code:'ML'") || !countryProfile.includes('partial-review-required')) throw new Error('Le profil national malien est incomplet.');
+if (!countryProfile.includes('dgt.gouv.ml') || !countryProfile.includes('sgg-mali.ml')) throw new Error('Le profil national doit référencer les autorités maliennes.');
+if (!officialSources.includes('dgt.gouv.ml') || !officialSources.includes('sgg-mali.ml') || !officialSources.includes('2023-045') || !officialSources.includes('2023-0509')) throw new Error('Les références légales maliennes (loi 2023-045, décret 2023-0509) sont absentes des sources officielles.');
+if (!whoRoadFacts.includes('225 482') || !whoRoadFacts.includes('19 %') || !whoRoadFacts.includes('+17 %') || !whoRoadFacts.includes('afro.who.int')) throw new Error('Les constats OMS doivent conserver les chiffres vérifiés et leur source primaire.');
+if (!whoRoadFacts.includes('régionales')) throw new Error('Les constats OMS doivent préciser que les données sont régionales et non nationales.');
+if (!bamakoGallery.includes('commons.wikimedia.org') || !/loading\s*=\s*["']lazy["']/.test(bamakoGallery)) throw new Error('La galerie Bamako doit charger des images distantes en mode différé.');
+if (!sw.includes('/country-profile.js') || !sw.includes('/official-sources.js') || !sw.includes('/who-road-facts.js') || !sw.includes('/bamako-gallery.js')) throw new Error('Les nouveaux modules doivent être mis en cache par le service worker.');
 if (vercel.outputDirectory !== 'public' || vercel.buildCommand !== 'npm run build') throw new Error('Configuration de build Vercel incorrecte.');
 if (!manifest.icons || !manifest.icons.length || !sw.includes('addAll(APP_SHELL)')) throw new Error('Configuration PWA incomplète.');
 const scripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map((m) => m[1]).filter((s) => s.trim());
 if (!scripts.length) throw new Error('Script applicatif introuvable.');
 for (const script of scripts) new vm.Script(script, { filename: 'public/index.html:inline-script' });
 new vm.Script(config, { filename: 'public/config.js' });
+new vm.Script(countryProfile, { filename: 'public/country-profile.js' });
+new vm.Script(officialSources, { filename: 'public/official-sources.js' });
+new vm.Script(whoRoadFacts, { filename: 'public/who-road-facts.js' });
+new vm.Script(bamakoGallery, { filename: 'public/bamako-gallery.js' });
 new vm.Script(sw, { filename: 'public/sw.js' });
 new vm.Script(expansion, { filename: 'public/learning-expansion.js' });
 new vm.Script(immersive, { filename: 'public/immersive-courses.js' });
@@ -70,4 +86,4 @@ for (const file of brandingFiles) {
   if (/BOLIFENKO\s+KALANSO/i.test(content)) throw new Error('Ancienne graphie interdite détectée dans : ' + file);
   if (!content.includes('Mali BOLIFEN KALANSO')) throw new Error('Nom officiel « Mali BOLIFEN KALANSO » absent de : ' + file);
 }
-console.log('Contrôles réussis : ' + (lessons + extraSigns) + ' panneaux, ' + bamakoCases + ' cas de Bamako, ' + nationalCases + ' cas nationaux, ' + goodPractices + ' bonnes conduites, quiz, PWA et syntaxe JavaScript.');
+console.log('Contrôles réussis : ' + (lessons + extraSigns) + ' panneaux, ' + bamakoCases + ' cas de Bamako, ' + nationalCases + ' cas nationaux, ' + goodPractices + ' bonnes conduites, quiz, PWA, profil national, sources officielles, constats OMS et galerie Bamako.');
