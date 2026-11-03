@@ -39,6 +39,7 @@ let completed=new Set();try{completed=new Set(JSON.parse(localStorage.getItem('m
 function openCourse(id){
 const x=lessons.find(v=>v.id===id);if(!x)return;
 const stage=document.querySelector('#imm-stage');
+let lastAnswerCorrect=false;
 // Réinitialiser l’état de réponse à chaque ouverture : sinon une réponse précédente bloque les scènes suivantes.
 delete stage.dataset.answered;
 stage.innerHTML='<article class="imm-detail"><div class="imm-detail-art">'+illustration(x)+'</div><div class="imm-detail-content"><span class="imm-tag">'+x.place+'</span><h2>'+x.title+'</h2><p>'+x.intro+'</p><div class="imm-steps"><div class="imm-step"><b>1 · COMPRENDRE</b><p>'+x.rule+'</p></div><div class="imm-step"><b>2 · AGIR</b><p>'+x.reflex+'</p></div><div class="imm-step"><b>3 · MÉMORISER</b><p>Observe, anticipe et protège les usagers les plus vulnérables.</p></div></div><button class="btn outline" id="imm-listen">🔊 Écouter le cours</button><div class="imm-question"><h3>🎯 À toi de décider</h3><p>'+x.question+'</p><div class="imm-answers">'+x.answers.map((a,i)=>'<button class="imm-answer" data-imm-answer="'+i+'">'+String.fromCharCode(65+i)+'. '+a+'</button>').join('')+'</div><div id="imm-feedback" aria-live="polite"></div></div><div class="imm-detail-actions"><button class="btn outline" id="imm-close">← Retour aux scènes</button><button class="btn dark" id="imm-next" disabled>Valider la leçon ✓</button></div></div></article>';
@@ -47,13 +48,13 @@ document.querySelector('#imm-listen').onclick=()=>{if(typeof window.readAloud===
 document.querySelector('#imm-close').onclick=()=>{stage.innerHTML='';document.querySelector('.imm-hero').scrollIntoView({behavior:'smooth',block:'start'});};
 document.querySelectorAll('[data-imm-answer]').forEach(b=>b.addEventListener('click',()=>{
 if(stage.dataset.answered==='yes')return;stage.dataset.answered='yes';
-const chosen=Number(b.dataset.immAnswer),ok=chosen===x.correct;
+const chosen=Number(b.dataset.immAnswer),ok=chosen===x.correct;lastAnswerCorrect=ok;
 document.querySelectorAll('[data-imm-answer]').forEach((a,i)=>{a.disabled=true;if(i===x.correct)a.classList.add('good');else if(i===chosen)a.classList.add('bad');});
 document.querySelector('#imm-feedback').innerHTML='<div class="imm-feedback"><strong>'+(ok?'Bonne décision !':'Voici le bon réflexe.')+'</strong><br>'+x.why+'</div>';
 document.querySelector('#imm-next').disabled=false;
 }));
 document.querySelector('#imm-next').onclick=()=>{
-completed.add(id);try{localStorage.setItem('mbk_immersive_done',JSON.stringify([...completed]));}catch(e){}
+if(!completed.has(id)){let stats={done:0,correct:0};try{stats=JSON.parse(localStorage.getItem('mbk_immersive_stats')||'{"done":0,"correct":0}');}catch(e){}stats.done=(Number(stats.done)||0)+1;if(lastAnswerCorrect)stats.correct=(Number(stats.correct)||0)+1;try{localStorage.setItem('mbk_immersive_stats',JSON.stringify(stats));}catch(e){}}completed.add(id);try{localStorage.setItem('mbk_immersive_done',JSON.stringify([...completed]));}catch(e){}window.dispatchEvent(new Event('mbk:progress-updated'));
 const card=document.querySelector('[data-course="'+id+'"]');if(card){card.classList.add('imm-completed');card.querySelector('.imm-open').textContent='✓ Leçon terminée';}
 stage.innerHTML='<div class="imm-feedback"><strong>Leçon validée !</strong> Tu peux explorer une autre scène et continuer ton entraînement.</div>';
 };
