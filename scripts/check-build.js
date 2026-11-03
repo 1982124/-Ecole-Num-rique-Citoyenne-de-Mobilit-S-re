@@ -27,6 +27,9 @@ if (!config.includes('window.APP_CONFIG')) throw new Error('Configuration de mar
 if (!html.includes('/country-profile.js') || !sw.includes('/country-profile.js') || !countryProfile.includes('window.MOBILITY_COUNTRY_PROFILE') || !countryProfile.includes("code:'ML'")) throw new Error('Le profil national malien doit être chargé et mis en cache.');
 if (!html.includes('/official-sources.js') || !sw.includes('/official-sources.js') || !officialSources.includes('dgt.gouv.ml') || !officialSources.includes('sgg-mali.ml')) throw new Error('Les références officielles maliennes doivent être chargées et mises en cache.');
 if (!html.includes('who-home-title') || !html.includes('225 482') || !html.includes('19 %') || !html.includes('OMS')) throw new Error('Les résultats OMS doivent apparaître sur la page d’accueil.');
+if (!html.includes('id="exercise-count"') || !html.includes('réussite globale') || !html.includes("window.addEventListener('mbk:progress-updated',updateStats)")) throw new Error('Le tableau de progression doit afficher les exercices et se rafraîchir après chaque réponse.');
+if (!html.includes("updateStats();';" ) && !html.includes("updateStats();")) throw new Error('Le recalcul des statistiques est absent.');
+if (!immersive.includes("mbk_immersive_stats") || !immersive.includes("mbk:progress-updated")) throw new Error('Les résultats des scènes immersives doivent être persistés et rafraîchir les statistiques.');
 if (vercel.outputDirectory !== 'public' || vercel.buildCommand !== 'npm run build') throw new Error('Configuration de build Vercel incorrecte.');
 if (!manifest.icons || !manifest.icons.length || !sw.includes('addAll(APP_SHELL)')) throw new Error('Configuration PWA incomplète.');
 const scripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map((m) => m[1]).filter((s) => s.trim());
