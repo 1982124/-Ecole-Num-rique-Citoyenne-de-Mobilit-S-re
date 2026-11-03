@@ -1,4 +1,4 @@
-# Plan CTO — fiabilisation et évolution de Mali Bolifen Kanlanso
+# Plan CTO — fiabilisation et évolution de Mali Bolifenko Kalanso
 
 > Document de pilotage. Il décrit les travaux à réaliser ; il ne prétend pas que les fonctions listées sont déjà implémentées.
 > Périmètre initial : PWA statique existante, branche `main`. Aucun service payant, aucune migration de production et aucun changement d'architecture majeur dans cette phase.
@@ -16,14 +16,15 @@
 ## État de départ connu
 
 - Application web statique servie depuis `public/`, installable comme PWA.
-- Build et test exécutent actuellement `node scripts/check-build.js`.
-- Le contrôle actuel vérifie des fichiers requis, la syntaxe JavaScript, des points d'ancrage pédagogiques, la configuration Vercel, les modules mis en cache et certains contenus.
+- `npm test` et `npm run build` exécutent actuellement trois contrôles en chaîne : `scripts/check-build.js`, `scripts/check-bamanankan.js` et `scripts/check-pwa.js`.
+- `check-build.js` vérifie les fichiers requis, la syntaxe JavaScript, des points d'ancrage pédagogiques, la configuration Vercel et certains contenus ; les deux contrôles complémentaires protègent les invariants du lexique/campagnes Bamanankan et les ressources du manifeste/service worker PWA.
+- Ces contrôles sont statiques : ils ne remplacent pas les tests manuels dans un navigateur réel, sur téléphone, après installation et en mode avion.
 - Le service worker utilise une liste de ressources statiques et un cache versionné. Le comportement hors ligne doit encore être vérifié dans un vrai navigateur après installation et sur téléphone.
 - Le lexique `public/bamanankan-glossary.js` existe ; il distingue les formes marquées attestées des notions en attente. Le module `public/safe-mobility-campaigns.js` contient un parcours français/bamanankan dont les formulations sont signalées comme propositions à faire valider.
 - Les progrès sont locaux au navigateur ; aucun compte ni synchronisation multi-appareils n'est établi.
 - Les fonctions de gestion multi-auto-écoles, de suivi moniteur/candidat et de paiement ne sont pas disponibles.
 - Les traductions Peul/Bamanankan proposées par le pipeline de la PR #12 sont un flux de brouillons à réviser, pas une traduction prête à publier.
-- Le dépôt contient plusieurs PR ouvertes. Les PR #11 et #12 doivent être examinées individuellement ; elles ne sont pas réputées fusionnées ni déployées.
+- Le dépôt contient plusieurs PR ouvertes. Les PR #3, #11, #12 et #13 sont à examiner individuellement ; aucune ne doit être réputée fusionnée ni déployée sans vérification de son état et de ses contrôles.
 
 ## Priorités et lots de travail
 
@@ -174,4 +175,4 @@ Une PR ne passe à l'étape suivante que si ses tests passent, si le diff est re
 - Toute source lexicographique Bamanankan reste une aide linguistique, pas une validation institutionnelle des termes routiers.
 
 ---
-Dernière mise à jour : 3 novembre 2026.
+Dernière mise à jour : 3 novembre 2026 (état du dépôt vérifié après fusion des contrôles Bamanankan/PWA).
