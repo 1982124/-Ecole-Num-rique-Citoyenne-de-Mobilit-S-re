@@ -42,4 +42,4 @@ assert(sw.includes("caches.match('/')"), 'solution de repli hors ligne de la pag
 assert(sw.includes('self.skipWaiting()') && sw.includes('self.clients.claim()'), 'activation de la nouvelle version du service worker incomplète');
 assert(sw.includes("key !== CACHE_NAME"), 'nettoyage des anciens caches absent');
 assert(sw.includes("request.method !== 'GET'"), 'les requêtes non GET doivent être ignorées');
-console.log('Contrôles PWA réussis : manifeste, ' + shell.length + ' ressources locales précachées, navigation hors ligne et cycle de mise à jour.');
+console.log('Contrôles PWA réussis : manifeste, icônes, ' + shell.length + ' ressources locales précachées, navigation hors ligne et cycle de mise à jour.');
