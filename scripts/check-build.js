@@ -65,7 +65,7 @@ if (lessons < 20) throw new Error('Le catalogue de leçons est trop court : ' + 
 const brandingFiles = ['README.md','package.json','public/config.js','public/index.html','public/manifest.webmanifest','server.js'];
 for (const file of brandingFiles) {
   const content = fs.readFileSync(path.join(root, file), 'utf8');
-  if (/BOLIFENKO\s+KALANSO/i.test(content)) throw new Error('Ancienne graphie interdite détectée dans : ' + file);
-  if (!content.includes('Mali BOLIFEN KALANSO')) throw new Error('Nom officiel « Mali BOLIFEN KALANSO » absent de : ' + file);
+  if (/Mali\s+BOLIFEN\s+KALANSO/i.test(content)) throw new Error('Ancienne graphie interdite détectée dans : ' + file);
+  if (!content.includes('BOLIFENKO KALANSO MALI')) throw new Error('Nom officiel « BOLIFENKO KALANSO MALI » absent de : ' + file);
 }
 console.log('Contrôles réussis : ' + (lessons + extraSigns) + ' panneaux, ' + bamakoCases + ' cas de Bamako, ' + nationalCases + ' cas nationaux, ' + goodPractices + ' bonnes conduites, quiz, PWA et syntaxe JavaScript.');
