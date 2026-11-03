@@ -1,7 +1,11 @@
-# Plan CTO — fiabilisation et évolution de Mali Bolifenko Kalanso
+# Plan CTO — fiabilisation et évolution de Mali BOLIFEN KALANSO
 
 > Document de pilotage. Il décrit les travaux à réaliser ; il ne prétend pas que les fonctions listées sont déjà implémentées.
 > Périmètre initial : PWA statique existante, branche `main`. Aucun service payant, aucune migration de production et aucun changement d'architecture majeur dans cette phase.
+
+## Nom officiel du projet (invariant non négociable)
+
+Le nom officiel est **« Mali BOLIFEN KALANSO »**. L'ancienne graphie « Bolifenko Kalanso » est interdite définitivement dans tout le dépôt : code, documentation, manifeste PWA, messages de commit et noms de fichiers. Le contrôle qualité `scripts/check-build.js` balaie l'intégralité des fichiers texte du dépôt à chaque exécution et fait échouer la CI si l'ancienne graphie réapparaît, quel que soit le fichier. Ce verrou ne peut être retiré que par une décision CTO explicite consignée dans ce document.
 
 ## Principes non négociables
 
@@ -141,7 +145,7 @@
 ## Matrice minimale anti-régression à exécuter pour chaque PR
 
 | Domaine | Contrôle obligatoire | Bloquant si échec |
-|---|---|---|
+|---|---|---|---|
 | Build | `npm test` et `npm run build` | Oui |
 | JavaScript | Syntaxe de tous les scripts chargés | Oui |
 | Navigation | Accès aux rubriques principales et retour | Oui |
@@ -152,9 +156,9 @@
 | Progression | Persistance locale après rechargement | Oui |
 | PWA | Installation, cache, mode avion après première visite | Oui avant release |
 | Mobile | 360/375/390 px sans débordement | Oui avant release |
-
 | Accessibilité | Clavier, focus visible, zoom, réduction animations | Oui avant release |
 | Juridique | Source primaire et date pour chaque règle | Oui pour publier le contenu concerné |
+| Marque | Ancienne graphie « Bolifenko Kalanso » interdite dans tout fichier du dépôt | Oui (verrou définitif) |
 
 ## Ordre d'exécution et décisions de passage
 
@@ -166,7 +170,7 @@
 6. **Lot 5 :** architecture multi-acteurs après décision coût/confidentialité (P5).
 7. **Lot 6 :** pilote terrain et modèle économique (P6).
 
-Une PR ne passe à l'étape suivante que si ses tests passent, si le diff est relu et si aucune régression n'est ouverte. Les PR existantes #11 et #12 doivent être examinées et comparées à ce plan avant fusion ; aucune fusion automatique n'est autorisée par ce document.
+Une PR ne passe à l'étape suivante que si ses tests passent, si le diff est relu et si aucune régression n'est ouverte. Les PR existantes doivent être examinées et comparées à ce plan avant fusion ; aucune fusion automatique n'est autorisée par ce document.
 
 ## Sources de référence à maintenir à jour
 
@@ -176,4 +180,4 @@ Une PR ne passe à l'étape suivante que si ses tests passent, si le diff est re
 - Toute source lexicographique Bamanankan reste une aide linguistique, pas une validation institutionnelle des termes routiers.
 
 ---
-Dernière mise à jour : 3 novembre 2026 (état du dépôt vérifié après fusion des contrôles Bamanankan/PWA).
+Dernière mise à jour : 3 novembre 2026 (nom officiel « Mali BOLIFEN KALANSO » verrouillé définitivement : balayage anti-graphie-ancienne sur tout le dépôt dans check-build.js).
