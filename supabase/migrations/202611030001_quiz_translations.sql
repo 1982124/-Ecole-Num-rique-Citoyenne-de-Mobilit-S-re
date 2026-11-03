@@ -49,6 +49,29 @@ create table if not exists public.quiz_translations (
   unique (question_id, language_code)
 );
 
+
+-- Import initial des 14 questions du quiz statique actuel.
+-- Elles restent en brouillon tant que leurs références réglementaires ne sont pas vérifiées.
+insert into public.quiz_questions
+  (question_number, theme, question_text, option_a, option_b, option_c, option_d,
+   correct_option, explanation, content_status)
+values
+  (1,'Signalisation','Que faut-il faire devant un panneau STOP ?','Ralentir sans s’arrêter','S’arrêter complètement','Accélérer pour libérer la voie','Klaxonner puis passer','B','Le STOP impose un arrêt complet avant de repartir en sécurité.','draft'),
+  (2,'Signalisation','Que signifie ce panneau ?','Stationnement autorisé','Sens unique obligatoire','Entrée interdite depuis ce côté','Route glissante','C','Le panneau sens interdit interdit d’entrer dans cette voie depuis ce côté.','draft'),
+  (3,'Usagers vulnérables','Que faire près d’une école ?','Augmenter la vitesse','Rester prêt à freiner et ralentir','Utiliser le téléphone','Ignorer les piétons','B','Des enfants peuvent surgir ou traverser : ralentis et reste attentif.','draft'),
+  (4,'Protection','À moto, quel réflexe protège la tête ?','Porter un casque attaché','Porter une casquette','Se tenir très près du véhicule devant','Rouler sur le bas-côté','A','Un casque adapté et correctement attaché aide à protéger la tête.','draft'),
+  (5,'Signalisation','Le feu est rouge. Que fais-tu ?','Je passe si personne ne regarde','Je m’arrête et j’attends','Je passe rapidement','Je klaxonne et continue','B','Un feu rouge impose l’arrêt.','draft'),
+  (6,'Usagers vulnérables','Une personne traverse au passage piéton. Quelle priorité ?','Passer avant elle','La laisser traverser en sécurité','Klaxonner pour qu’elle coure','La contourner de près','B','Ralentis et laisse les piétons traverser en sécurité.','draft'),
+  (7,'Priorités','Devant un panneau cédez-le-passage, tu dois…','Accélérer systématiquement','Laisser passer les usagers prioritaires','T’arrêter au milieu de la route','Fermer les yeux et avancer','B','Ralentis et cède le passage ; arrête-toi si nécessaire.','draft'),
+  (8,'Vitesse','Le panneau indique 50. Que signifie-t-il ?','Vitesse minimale de 50 partout','Limite à ne pas dépasser dans les conditions indiquées','Distance de 50 mètres','Nombre de passagers autorisés','B','La limite indiquée ne doit pas être dépassée ; adapte aussi ta vitesse aux conditions.','draft'),
+  (9,'Priorités','Le feu passe au vert mais l’intersection est bloquée. Tu dois…','Avancer quand même','Attendre que le passage soit libre','Contourner par le trottoir','Reculer sans regarder','B','Même au vert, vérifie que tu peux franchir l’intersection sans la bloquer.','draft'),
+  (10,'Distraction','Ton téléphone sonne pendant que tu conduis. Que fais-tu ?','Je le lis immédiatement','Je réponds en roulant','Je m’arrête dans un lieu sûr avant de l’utiliser','Je regarde juste quelques secondes','C','Quelques secondes sans regarder la route suffisent pour provoquer un accident.','draft'),
+  (11,'Sécurité ferroviaire','Une barrière de passage à niveau est fermée. Que fais-tu ?','Je passe entre les barrières','J’attends qu’elle s’ouvre et que le passage soit sûr','Je contourne par le bas-côté','Je klaxonne et passe','B','Ne franchis jamais une barrière fermée et ne contourne jamais les dispositifs de sécurité.','draft'),
+  (12,'Conduite adaptée','La route est mouillée. Quel est le meilleur réflexe ?','Accélérer','Freiner brusquement','Réduire la vitesse et augmenter la distance','Suivre de très près','C','Une chaussée mouillée réduit l’adhérence : ralentis et garde plus de distance.','draft'),
+  (13,'Protection','Quand faut-il attacher la ceinture ?','Avant de démarrer','Seulement sur autoroute','Après avoir accéléré','Uniquement la nuit','A','La ceinture doit être attachée avant le départ.','draft'),
+  (14,'Conduite adaptée','Pourquoi garder une distance de sécurité ?','Pour empêcher les autres de passer','Pour avoir le temps de réagir et de freiner','Pour rouler plus vite','Pour éviter les rétroviseurs','B','La distance de sécurité donne le temps de réagir, surtout si le véhicule devant freine.','draft')
+on conflict (question_number) do nothing;
+
 create index if not exists quiz_translations_language_status_idx
   on public.quiz_translations(language_code, translation_status);
 create index if not exists quiz_questions_content_status_idx
