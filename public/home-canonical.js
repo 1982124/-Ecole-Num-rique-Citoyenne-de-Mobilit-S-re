@@ -1,4 +1,4 @@
-/* Accueil canonique — message officiel MALI BOLIFEN KALANSO.
+/* Accueil canonique — message officiel MALI  BOLIFEN KALANSO MALI.
    Chiffres OMS vérifiés le 3 novembre 2026 : 225 482 décès routiers estimés en Région africaine (2021),
    19 % des décès mondiaux, casque : -42 % de risque de décès et -69 % de risque de traumatisme crânien.
    Sources : OMS Bureau régional de l'Afrique (afro.who.int) et fiche OMS sécurité routière. */
