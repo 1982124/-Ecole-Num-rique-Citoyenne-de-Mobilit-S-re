@@ -1,11 +1,14 @@
 'use strict';
+/*
+ * Configuration de déploiement : le code pays sélectionne un profil national.
+ * Pour une nouvelle déclinaison, créer un profil validé et remplacer countryCode.
+ */
 window.APP_CONFIG = Object.freeze({
   brandBase: 'École Numérique et Citoyenne pour une Mobilité Sûre',
   countrySuffix: 'Mali BOLIFEN KALANSO',
   countryCode: 'ML',
+  countryProfile: '/country-profile.js',
   defaultLanguage: 'fr',
-  // La lecture vocale utilise la synthèse vocale disponible sur l'appareil.
-  // L'apprentissage fonctionne sans serveur de discussion ni base de données.
   backendUrl: ''
 });
 window.BACKEND_URL = window.APP_CONFIG.backendUrl;
