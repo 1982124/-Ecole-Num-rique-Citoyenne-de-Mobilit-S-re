@@ -29,7 +29,8 @@ if (!html.includes('/official-sources.js') || !sw.includes('/official-sources.js
 if (!html.includes('who-home-title') || !html.includes('225 482') || !html.includes('19 %') || !html.includes('OMS')) throw new Error('Les résultats OMS doivent apparaître sur la page d’accueil.');
 if (!html.includes('id="exercise-count"') || !html.includes('réussite globale') || !html.includes("window.addEventListener('mbk:progress-updated',updateStats)")) throw new Error('Le tableau de progression doit afficher les exercices et se rafraîchir après chaque réponse.');
 if (!html.includes("updateStats();';" ) && !html.includes("updateStats();")) throw new Error('Le recalcul des statistiques est absent.');
-if (!immersive.includes("mbk_immersive_stats") || !immersive.includes("mbk:progress-updated")) throw new Error('Les résultats des scènes immersives doivent être persistés et rafraîchir les statistiques.');
+if (!immersive.includes("mbk_immersive_stats") || !immersive.includes("mbk:progress-updated") || !immersive.includes('stats.scored=')) throw new Error('Les résultats des scènes immersives doivent être persistés et rafraîchir les statistiques.');
+if (!html.includes("updateStats();renderScenario();toast('Entraînement recommencé.')")) throw new Error('La remise à zéro des situations doit aussi recalculer les statistiques.');
 if (vercel.outputDirectory !== 'public' || vercel.buildCommand !== 'npm run build') throw new Error('Configuration de build Vercel incorrecte.');
 if (!manifest.icons || !manifest.icons.length || !sw.includes('addAll(APP_SHELL)')) throw new Error('Configuration PWA incomplète.');
 const scripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map((m) => m[1]).filter((s) => s.trim());
