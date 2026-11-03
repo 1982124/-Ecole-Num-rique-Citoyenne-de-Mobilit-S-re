@@ -47,7 +47,7 @@ body{background:#f1f3f2}
 @media(max-width:540px){.canonical-hero{padding:17px 16px 27px}.canonical-hero .brandmark{width:44px;height:44px}.canonical-hero .brandname{font-size:17px;line-height:1.25}.canonical-hero .brandtag{font-size:12px}.canonical-hero .hero{margin-top:22px}.canonical-hero .hero h2{font-size:clamp(30px,8vw,36px)}.canonical-hero .actions{display:grid;grid-template-columns:1fr}.canonical-hero .actions .btn{width:100%}.canonical-hero .hero-art{min-height:190px}.traffic-signal{transform:scale(.86);transform-origin:center}}
 @media(prefers-reduced-motion:reduce){.signal-red,.signal-amber,.signal-green{animation:none!important}.signal-green{background:#20e66b;opacity:1;box-shadow:0 0 8px #20e66b,0 0 24px #20e66b}.signal-red,.signal-amber{opacity:.38}}
 
-</style>
+\n/* Bloc OMS — résultats régionaux affichés sur l’accueil */\n.who-home{margin:0 0 24px;padding:22px;border:1px solid #d7e4d9;border-radius:20px;background:linear-gradient(135deg,#fffefa 0%,#edf6ed 100%);box-shadow:var(--shadow);color:#1d3029}.who-home .who-kicker{font-size:12px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:#087a3e}.who-home h2{font-size:clamp(22px,3vw,29px);line-height:1.2;margin:6px 0 7px}.who-home .who-intro{margin:0 0 17px;color:#526258;max-width:850px}.who-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.who-metric{padding:14px;border:1px solid #dce8dd;border-radius:14px;background:#fff}.who-metric strong{display:block;font-size:clamp(22px,3vw,30px);line-height:1.15;color:#087a3e}.who-metric span{display:block;margin-top:5px;font-size:12px;line-height:1.45;color:#526258}.who-helmet{display:grid;grid-template-columns:auto 1fr;gap:13px;align-items:center;margin-top:13px;padding:14px;border-radius:14px;background:#1a1d24;color:#f8fafc}.who-helmet strong{font-size:clamp(25px,4vw,34px);color:#ffcc00;white-space:nowrap}.who-helmet p{margin:0;color:#e2e8f0;font-size:14px;line-height:1.55}.who-source{margin:12px 0 0;color:#647269;font-size:11px;line-height:1.55}.who-source a{color:#087a3e;font-weight:800}.who-home .who-note{margin:10px 0 0;color:#657169;font-size:11px;line-height:1.5}@media(max-width:760px){.who-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.who-home{padding:16px}}@media(max-width:420px){.who-helmet{grid-template-columns:1fr;gap:5px}.who-metric{padding:11px}.who-metric strong{font-size:23px}}\n</style>
 </head>
 <body>
 <div class="topline" aria-hidden="true"></div>
@@ -58,6 +58,20 @@ body{background:#f1f3f2}
 </header>
 <main class="shell">
  <div class="stats" aria-label="Votre progression"><div class="stat"><div class="stat-icon">🚦</div><div><strong id="lesson-count">51</strong><span>notions à découvrir</span></div></div><div class="stat"><div class="stat-icon">⭐</div><div><strong id="done-count">0</strong><span>leçons consultées</span></div></div><div class="stat"><div class="stat-icon">🎯</div><div><strong id="score-count">0%</strong><span>réussite au quiz</span></div></div></div>
+ <section class="who-home" aria-labelledby="who-home-title">
+  <div class="who-kicker">Données de l’Organisation mondiale de la Santé</div>
+  <h2 id="who-home-title">La sécurité routière en Afrique : les chiffres qui nous mobilisent</h2>
+  <p class="who-intro">Les estimations de l’OMS montrent l’ampleur du défi pour la Région africaine. Ces données donnent du sens à l’apprentissage, à la prudence et à la protection de chaque usager de la route.</p>
+  <div class="who-metrics">
+   <div class="who-metric"><strong>225 482</strong><span>décès liés aux accidents de la route estimés en 2021 dans la Région africaine de l’OMS</span></div>
+   <div class="who-metric"><strong>19 %</strong><span>de l’ensemble des décès routiers dans le monde, pour 15 % de la population mondiale</span></div>
+   <div class="who-metric"><strong>+17 %</strong><span>hausse estimée des décès routiers dans la Région entre 2010 et 2021</span></div>
+   <div class="who-metric"><strong>50 %</strong><span>des décès concernent les usagers vulnérables : piétons, cyclistes et usagers de deux ou trois roues</span></div>
+  </div>
+  <div class="who-helmet"><strong>−42 % / −70 %</strong><p>Le port correct d’un casque de moto peut réduire le risque de décès de 42 % et le risque de traumatisme crânien de près de 70 %. Un casque de qualité, bien ajusté et correctement attaché, protège réellement.</p></div>
+  <p class="who-source">Source : OMS, <em>Rapport de situation sur la sécurité routière dans la Région africaine 2023</em> (données 2021, publication juillet 2024). <a href="https://www.afro.who.int/fr/news/les-deces-dus-aux-accidents-de-la-circulation-augmentent-dans-la-region-africaine-mais" target="_blank" rel="noopener noreferrer">Lire le communiqué de l’OMS ↗</a> · <a href="https://iris.who.int/bitstream/handle/10665/378194/9789290314363-eng.pdf?sequence=4" target="_blank" rel="noopener noreferrer">Consulter le rapport complet ↗</a>.</p>
+  <p class="who-note">Important : les chiffres 225 482, 19 %, +17 % et 50 % concernent la Région africaine de l’OMS, et non le seul Mali. Les estimations ne sont pas des statistiques nationales maliennes.</p>
+ </section>
  <nav class="tabs" aria-label="Navigation principale"><button class="tab active" data-tab="learn" aria-current="page">📖 Apprendre</button><button class="tab" data-tab="quiz">🎯 Quiz</button><button class="tab" data-tab="scenarios">🚦 Situations</button><button class="tab" data-tab="sanctions">⚖️ Sanctions</button></nav>
  <section id="learn" class="view">
   <div class="progress"><div><h3>Ton parcours commence ici</h3><p id="progress-copy">Explore les panneaux et marque les leçons que tu as étudiées.</p></div><div class="ring" id="progress-ring" style="--progress:0%"><span id="progress-pct">0%</span></div></div>
