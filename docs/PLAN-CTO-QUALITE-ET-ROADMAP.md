@@ -152,6 +152,7 @@
 | Progression | Persistance locale après rechargement | Oui |
 | PWA | Installation, cache, mode avion après première visite | Oui avant release |
 | Mobile | 360/375/390 px sans débordement | Oui avant release |
+
 | Accessibilité | Clavier, focus visible, zoom, réduction animations | Oui avant release |
 | Juridique | Source primaire et date pour chaque règle | Oui pour publier le contenu concerné |
 
