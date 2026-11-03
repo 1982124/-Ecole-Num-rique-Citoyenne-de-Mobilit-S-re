@@ -5,7 +5,7 @@
 
 ## Nom officiel du projet (invariant non négociable)
 
-Le nom officiel est **« Mali BOLIFEN KALANSO »**. L'ancienne graphie « Bolifenko Kalanso » est interdite définitivement dans tout le dépôt : code, documentation, manifeste PWA, messages de commit et noms de fichiers. Le contrôle qualité `scripts/check-build.js` balaie l'intégralité des fichiers texte du dépôt à chaque exécution et fait échouer la CI si l'ancienne graphie réapparaît, quel que soit le fichier. Ce verrou ne peut être retiré que par une décision CTO explicite consignée dans ce document.
+Le nom officiel est **« Mali BOLIFEN KALANSO »**. Toute autre graphie du nom — en particulier l'ancienne, qui diffère par les lettres finales du premier mot — est interdite définitivement dans tout le dépôt : code, documentation, manifeste PWA, messages de commit et noms de fichiers. Le contrôle qualité `scripts/check-build.js` balaie l'intégralité des fichiers texte du dépôt à chaque exécution et fait échouer la CI si une graphie alternative réapparaît, quel que soit le fichier. Ce verrou ne peut être retiré que par une décision CTO explicite consignée dans ce document.
 
 ## Principes non négociables
 
@@ -145,7 +145,7 @@ Le nom officiel est **« Mali BOLIFEN KALANSO »**. L'ancienne graphie « Bolife
 ## Matrice minimale anti-régression à exécuter pour chaque PR
 
 | Domaine | Contrôle obligatoire | Bloquant si échec |
-|---|---|---|---|
+|---|---|---|
 | Build | `npm test` et `npm run build` | Oui |
 | JavaScript | Syntaxe de tous les scripts chargés | Oui |
 | Navigation | Accès aux rubriques principales et retour | Oui |
@@ -158,7 +158,7 @@ Le nom officiel est **« Mali BOLIFEN KALANSO »**. L'ancienne graphie « Bolife
 | Mobile | 360/375/390 px sans débordement | Oui avant release |
 | Accessibilité | Clavier, focus visible, zoom, réduction animations | Oui avant release |
 | Juridique | Source primaire et date pour chaque règle | Oui pour publier le contenu concerné |
-| Marque | Ancienne graphie « Bolifenko Kalanso » interdite dans tout fichier du dépôt | Oui (verrou définitif) |
+| Marque | Graphie alternative du nom interdite dans tout fichier du dépôt | Oui (verrou définitif) |
 
 ## Ordre d'exécution et décisions de passage
 
@@ -180,4 +180,4 @@ Une PR ne passe à l'étape suivante que si ses tests passent, si le diff est re
 - Toute source lexicographique Bamanankan reste une aide linguistique, pas une validation institutionnelle des termes routiers.
 
 ---
-Dernière mise à jour : 3 novembre 2026 (nom officiel « Mali BOLIFEN KALANSO » verrouillé définitivement : balayage anti-graphie-ancienne sur tout le dépôt dans check-build.js).
+Dernière mise à jour : 3 novembre 2026 (nom officiel « Mali BOLIFEN KALANSO » verrouillé définitivement : balayage de tout le dépôt dans check-build.js à chaque exécution des contrôles).
