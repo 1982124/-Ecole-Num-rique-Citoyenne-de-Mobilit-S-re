@@ -2,7 +2,7 @@
   "name": "mali-bolifen-kalanso",
   "version": "1.1.0",
   "private": true,
-  "description": "École Numérique et Citoyenne pour une Mobilité Sûre : Mali BOLIFEN KALANSO",
+  "description": "École Numérique et Citoyenne pour une Mobilité Sûre : MALI  BOLIFEN KALANSO MALI",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
