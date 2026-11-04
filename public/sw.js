@@ -1,6 +1,6 @@
 'use strict';
-const CACHE_NAME = 'mbk-shell-v17';
-const APP_SHELL = ['/', '/config.js', '/country-profile.js', '/official-sources.js', '/who-road-facts.js', '/bamako-gallery.js', '/quiz-exam.js', '/signs-extra.js', '/home-canonical.js', '/hero-bamako.js', '/journee-bamako.js', '/signs-extra2.js', '/quiz-bank2.js', '/audio-voiceover.js', '/spaces-navigation.js', '/manifest.webmanifest', '/icon.svg', '/learning-expansion.js', '/immersive-courses.js', '/safe-mobility-campaigns.js', '/permit-categories.js', '/bamanankan-glossary.js', '/programs.js'];
+const CACHE_NAME = 'mbk-shell-v18';
+const APP_SHELL = ['/', '/config.js', '/country-profile.js', '/official-sources.js', '/who-road-facts.js', '/bamako-gallery.js', '/quiz-exam.js', '/signs-extra.js', '/home-canonical.js', '/hero-bamako.js', '/journee-bamako.js', '/signs-extra2.js', '/quiz-bank2.js', '/audio-voiceover.js', '/spaces-navigation.js', '/institutional-design.js', '/images/bamako/hero-bamako-carrefour.webp', '/manifest.webmanifest', '/icon.svg', '/learning-expansion.js', '/immersive-courses.js', '/safe-mobility-campaigns.js', '/permit-categories.js', '/bamanankan-glossary.js', '/programs.js'];
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()));
 });
