@@ -35,7 +35,12 @@ if (!whoRoadFacts.includes('régionales')) throw new Error('Les constats OMS doi
 if (!bamakoGallery.includes('commons.wikimedia.org') || !/loading\s*=\s*["']lazy["']/.test(bamakoGallery)) throw new Error('La galerie Bamako doit charger des images distantes en mode différé.');
 if (!sw.includes('/country-profile.js') || !sw.includes('/official-sources.js') || !sw.includes('/who-road-facts.js') || !sw.includes('/bamako-gallery.js')) throw new Error('Les nouveaux modules doivent être mis en cache par le service worker.');
 if (vercel.outputDirectory !== 'public' || vercel.buildCommand !== 'npm run build') throw new Error('Configuration de build Vercel incorrecte.');
-if (!manifest.icons || !manifest.icons.length || !sw.includes('addAll(APP_SHELL)')) throw new Error('Configuration PWA incomplète.');
+// Configuration PWA : le précache de l'app shell est requis, sous l'une des deux stratégies validées —
+// installation atomique historique (addAll(APP_SHELL)) OU installation tolérante aux pannes
+// (mise en cache individuelle des fichiers APP_SHELL, un fichier manquant ne casse pas l'installation).
+// L'intention protégée est la même : l'app shell est précaché au démarrage.
+if (!manifest.icons || !manifest.icons.length) throw new Error('Configuration PWA incomplète : icônes du manifeste absentes.');
+if (!(sw.includes('addAll(APP_SHELL)') || sw.includes('APP_SHELL.map'))) throw new Error('Configuration PWA incomplète : le précache de l\u2019app shell est absent du service worker.');
 const scripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map((m) => m[1]).filter((s) => s.trim());
 if (!scripts.length) throw new Error('Script applicatif introuvable.');
 for (const script of scripts) new vm.Script(script, { filename: 'public/index.html:inline-script' });
@@ -81,7 +86,7 @@ if (goodPractices !== 8) throw new Error('Le module bonnes conduites doit conten
 if (lessons < 20) throw new Error('Le catalogue de leçons est trop court : ' + lessons);
 // Verrou définitif sur le nom officiel « Mali BOLIFEN KALANSO ».
 // Toute graphie alternative du nom est interdite dans TOUT le dépôt, quel que soit le fichier.
-// Balayage récursif de l'ensemble des fichiers texte (hors node_modules, .git et archives de résultats).
+// Balayage récursif de l'ensemble des fichiers texte (hors node_modules, .git et archives de résultats de tests).
 const FORBIDDEN_NAME = /BOLIFENKO\s+KALANSO/i;
 const TEXT_EXTENSIONS = new Set(['.js', '.html', '.css', '.json', '.md', '.txt', '.yml', '.yaml', '.webmanifest', '.svg', '.xml']);
 const SKIP_DIRS = new Set(['node_modules', '.git', 'docs/resultats-tests']);
