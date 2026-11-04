@@ -8,6 +8,12 @@ const root = path.resolve(__dirname, '..');
 const glossarySource = fs.readFileSync(path.join(root, 'public/bamanankan-glossary.js'), 'utf8');
 const campaignSource = fs.readFileSync(path.join(root, 'public/safe-mobility-campaigns.js'), 'utf8');
 
+// La voix Bamanankan reste bloquée tant qu'une validation humaine de prononciation n'a pas été réalisée.
+assert.match(campaignSource, /function speak\(s\)\{if\(lang!==\x27fr\x27\)return;/u, 'La synthèse vocale doit refuser toute lecture lorsque la langue active est Bamanankan.');
+assert.match(campaignSource, /lang=\x27fr-FR\x27/u, 'La synthèse vocale autorisée doit être explicitement française.');
+assert.match(campaignSource, /Lecture vocale Bamanankan temporairement désactivée/u, 'L’interface doit expliquer pourquoi la voix Bamanankan est indisponible.');
+assert.doesNotMatch(campaignSource, /u\.lang=lang===\x27fr\x27\?\x27fr-FR\x27:\x27bm\x27/u, 'Aucune voix TTS bm ne doit être assignée.');
+
 // Execute the glossary data definition without mounting its UI.
 const document = {
   readyState: 'loading',
