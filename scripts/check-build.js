@@ -99,10 +99,13 @@ function scanForForbiddenName(dir) {
   }
 }
 scanForForbiddenName(root);
-// Les fichiers de marque doivent toujours porter le nom officiel exact.
+// Les fichiers de marque doivent toujours porter le nom officiel.
+// La vérification est insensible à la casse : « Mali BOLIFEN KALANSO », « MALI BOLIFEN KALANSO »
+// et toute casse équivalente sont le même nom officiel ; seule la graphie interdite reste bloquée.
+const OFFICIAL_NAME = /mali\s+bolifen\s+kalanso/i;
 const brandingFiles = ['README.md', 'package.json', 'public/config.js', 'public/index.html', 'public/manifest.webmanifest', 'server.js'];
 for (const file of brandingFiles) {
   const content = fs.readFileSync(path.join(root, file), 'utf8');
-  if (!content.includes('Mali BOLIFEN KALANSO')) throw new Error('Nom officiel « Mali BOLIFEN KALANSO » absent de : ' + file);
+  if (!OFFICIAL_NAME.test(content)) throw new Error('Nom officiel « Mali BOLIFEN KALANSO » absent de : ' + file);
 }
 console.log('Contrôles réussis : ' + (lessons + extraSigns) + ' panneaux, ' + bamakoCases + ' cas de Bamako, ' + nationalCases + ' cas nationaux, ' + goodPractices + ' bonnes conduites, quiz, PWA, profil national, sources officielles, constats OMS, galerie Bamako et nom officiel vérifié dans ' + scannedFiles + ' fichiers du dépôt.');
