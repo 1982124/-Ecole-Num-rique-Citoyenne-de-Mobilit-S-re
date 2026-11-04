@@ -26,7 +26,7 @@ La navigation principale sera limitée à **six espaces**, alimentés par les mo
 
 ### Méthode pédagogique transversale
 
-Chaque situation immersives suit : **VOIR → ÉCOUTER → COMPRENDRE → CHOISIR → AGIR → RÉPÉTER.**
+Chaque situation immersive suit : **VOIR → ÉCOUTER → COMPRENDRE → CHOISIR → AGIR → RÉPÉTER.**
 Parcours d'apprentissage en sept étapes : **Découvrir → Apprendre → Reconnaître → S'entraîner → Pratiquer → Évaluer → Adopter.**
 Exigence : réussir un quiz ne suffit pas — l'apprenant doit pouvoir **expliquer pourquoi** une réponse est correcte et **reconnaître le danger** dans une situation concrète.
 
@@ -38,7 +38,7 @@ Ordre exact retenu : (1) titre « MALI BOLIFEN KALANSO » et devise « La route 
 
 Tout contenu affiché appartient à l'une de ces trois catégories, toujours étiquetée :
 1. **Règles officielles** — textes et prescriptions vérifiés auprès des sources compétentes au Mali.
-2. **Enseignements pédagogiques** — explications simplifiées pour faciliter la compréhension.
+2. **Enseignements pédagogiques** — explications simplifiées pour faciliter la comprévension.
 3. **Conseils de prévention** — recommandations de sécurité, clairement identifiées comme telles.
 
 L'application prépare à la conduite et à la mobilité sûre ; elle ne délivre pas elle-même de permis officiel.
@@ -103,16 +103,14 @@ Décision CTO : cette architecture est la **cible fonctionnelle** ; l'applicatio
 ## État de départ connu
 
 - Application web statique servie depuis `public/`, installable comme PWA.
-- `npm test` et `npm run build` exécutent actuellement trois contrôles en chaîne : `scripts/check-build.js`, `scripts/check-bamanankan.js` et `scripts/check-pwa.js`.
-- `check-build.js` vérifie les fichiers requis, la syntaxe JavaScript, des points d'ancrage pédagogiques, la configuration Vercel et certains contenus ; les deux contrôles complémentaires protègent les invariants du lexique/campagnes Bamanankan et les ressources du manifeste/service worker PWA.
+- `npm test` et `npm run build` exécutent trois contrôles en chaîne : `scripts/check-build.js`, `scripts/check-bamanankan.js` et `scripts/check-pwa.js`.
 - Ces contrôles sont statiques : ils ne remplacent pas les tests manuels dans un navigateur réel, sur téléphone, après installation et en mode avion.
-- Le service worker utilise une liste de ressources statiques et un cache versionné. Le comportement hors ligne doit encore être vérifié dans un vrai navigateur après installation et sur téléphone.
-- Le lexique `public/bamanankan-glossary.js` existe ; il distingue les formes marquées attestées des notions en attente. Le module `public/safe-mobility-campaigns.js` contient un parcours français/bamanankan dont les formulations sont signalées comme propositions à faire valider.
+- Le service worker utilise une liste de ressources statiques et un cache versionné (v16). Le comportement hors ligne doit être vérifié dans un vrai navigateur après installation et sur téléphone.
+- Le lexique `public/bamanankan-glossary.js` existe ; il distingue les formes attestées des notions en attente. Le module `public/safe-mobility-campaigns.js` contient un parcours français/bamanankan dont les formulations sont signalées comme propositions à faire valider.
 - Les progrès sont locaux au navigateur ; aucun compte ni synchronisation multi-appareils n'est établi.
 - Les fonctions de gestion multi-auto-écoles, de suivi moniteur/candidat et de paiement ne sont pas disponibles.
-- Les traductions Peul/Bamanankan proposées par le pipeline de la PR #12 sont un flux de brouillons à réviser, pas une traduction prête à publier.
-- Le dépôt contient plusieurs PR ouvertes. Les PR #3, #11, #12 et #13 sont à examiner individuellement ; aucune ne doit être réputée fusionnée ni déployée sans vérification de son état et de ses contrôles.
-- Modules injectés progressivement sur `main` : profil national, sources officielles, constats OMS, galerie Bamako, examen blanc chronométré, familles de panneaux complémentaires, accueil canonique, photo hero de Bamako, parcours narratif « Une journée à Bamako ». Le verrou sur le nom officiel est actif dans `check-build.js`.
+- Modules injectés progressivement sur `main` : profil national, sources officielles, constats OMS, galerie Bamako, examen blanc chronométré, familles de panneaux complémentaires, accueil canonique, photo hero de Bamako, parcours narratif « Une journée à Bamako », 75 panneaux, ~90 questions d'entraînement, voix off française (accueil, parcours, leçons), audio Bamanankan différé avec décision documentée.
+- PR historiques (#3, #11, #12, #13) : examinées et closes ou intégrées via consolidation ; aucune ne reste fusionnable en l'état.
 
 ## Priorités et lots de travail
 
@@ -128,38 +126,29 @@ Décision CTO : cette architecture est la **cible fonctionnelle** ; l'applicatio
 - Chaque fonctionnalité existante a un test automatisé ou une procédure manuelle explicite.
 - Le test échoue si un module essentiel disparaît du HTML ou du cache PWA.
 - Les entrées Bamanankan existantes, leurs identifiants, caractères et statuts sont conservés.
-- Les tests ne prétendent pas prouver la qualité linguistique ou juridique.
 
-### P1 — Accueil et navigation en six espaces (premier chantier de l'architecture cible)
+### P1 — Accueil et navigation en six espaces + langues et voix
 
 **Tâches**
-- P1.A.1 Cartographier l'onglet existant vers son espace cible (table de correspondance complète).
+- P1.A.1 Cartographier chaque onglet existant vers son espace cible (table de correspondance complète).
 - P1.A.2 Regrouper la barre d'onglets actuelle en six espaces, sans supprimer aucun module ni donnée.
 - P1.A.3 Ajouter le bouton « Reprendre mon apprentissage » alimenté par la progression réelle.
 - P1.A.4 Conserver le bloc OMS à son emplacement retenu (après la progression, avant la navigation).
 - P1.A.5 Vérifier 360/375/390 px : chaque espace accessible en deux gestes maximum.
-
-**Critères d'acceptation**
-- Aucun module existant n'est retiré ni inaccessible.
-- La progression locale persiste après la réorganisation.
-- L'accueil affiche la progression réelle, pas décorative.
-- CI verte et test manuel PWA avant chaque étape de regroupement.
-
-### P1 — Bamanankan et accessibilité vocale, sans régression
-
-**Tâches**
 - P1.1 Recenser précisément les écrans et questions déjà disponibles en Bamanankan.
 - P1.2 Ajouter des tests de présence et de rendu pour les contenus BM existants.
-- P1.3 Vérifier le choix de langue, le maintien du choix après navigation/rechargement et le retour au français.
-- P1.4 Tester la synthèse vocale selon les voix réellement installées ; afficher clairement une solution de repli si aucune voix BM n'est disponible.
+- P1.3 Vérifier le choix de langue, son maintien après navigation/rechargement et le retour au français.
+- P1.4 Tester la synthèse vocale française selon les voix réellement installées ; afficher une solution de repli si aucune voix n'est disponible.
 - P1.5 Constituer une liste de termes à valider par des locuteurs/enseignants ; conserver tons, ɛ/ɔ/ɲ/ŋ et variantes.
 - P1.6 Traiter le Peul/Fulfulde comme un lot distinct, soumis à validation humaine avant diffusion.
+- P1.7 Audio Bamanankan : statut « fonctionnalité à venir » (aucune voix bambara fiable en navigateur aujourd'hui). Chemins documentés : (a) MALIBA-AI TTS open source sur HuggingFace (MOS 4,2/5, 10 locuteurs, licence CC BY-NC-SA non commerciale — incompatible avec un rachat commercial sans renégociation) ; (b) Kooma.ai (malien, 40+ voix, forfait découverte puis payant — accord du porteur requis) ; (c) DJELIA (API bambara/dioula, payante). **Recommandation CTO** : enregistrements humains par locuteurs/radios maliennes pour le lot pilote (accueil + 10 scènes) — coût zéro, tons justes, droits possédés, compatible rachat ; TTS à réévaluer tous les 6 mois.
 
 **Critères d'acceptation**
+- Aucun module existant n'est retiré ni inaccessible lors du regroupement.
+- La progression locale persiste après la réorganisation ; l'accueil affiche la progression réelle.
 - Aucun texte BM existant n'est supprimé ou remplacé par une traduction automatique non révisée.
-- Une vérification de non-régression couvre les caractères Unicode et l'affichage sur mobile.
-- L'application ne promet pas une voix hors ligne ou une voix Bamanankan si elle n'est pas détectée et testée sur l'appareil.
 - Toute nouvelle traduction porte un statut explicite : brouillon, en révision ou validée, avec réviseur et date.
+- L'application n'affiche jamais l'audio Bamanankan comme disponible tant qu'il n'est pas réellement testé sur appareil.
 
 ### P2 — Fiabilité PWA et usage hors ligne
 
@@ -175,7 +164,6 @@ Décision CTO : cette architecture est la **cible fonctionnelle** ; l'applicatio
 - Aucun cache obsolète ne bloque une nouvelle version ; la stratégie de mise à jour est documentée.
 - Aucune donnée locale utilisateur n'est effacée lors d'une mise à jour du cache.
 - Aucun débordement horizontal sur les tailles ciblées ; commandes principales utilisables au clavier.
-- Les limites audio hors ligne sont décrites honnêtement.
 
 ### P3 — Référentiel juridique et pédagogique Mali
 
@@ -190,10 +178,9 @@ Décision CTO : cette architecture est la **cible fonctionnelle** ; l'applicatio
 - Chaque affirmation réglementaire affichée possède une source primaire identifiable et une date de vérification.
 - Aucune règle d'un autre pays n'est importée comme règle malienne.
 - Les sanctions et statistiques datées portent leur période et leur source.
-- Les contenus non confirmés sont explicitement signalés ou non publiés.
 - Aucune présentation ne laisse croire que l'app délivre un permis ou vaut inscription administrative.
 
-**Point de vigilance** : les documents institutionnels consultés peuvent annoncer des projets de réforme ou citer des textes anciens. Une annonce, un plan d'action ou un rapport secondaire ne suffit pas à prouver qu'une règle est entrée en vigueur. Vérifier le Journal officiel et les textes consolidés applicables avant publication.
+**Point de vigilance** : une annonce, un plan d'action ou un rapport secondaire ne suffit pas à prouver qu'une règle est entrée en vigueur. Vérifier le Journal officiel et les textes consolidés applicables avant publication.
 
 ### P4 — Renforcer l'apprentissage et la préparation à l'examen
 
@@ -207,8 +194,7 @@ Décision CTO : cette architecture est la **cible fonctionnelle** ; l'applicatio
 **Critères d'acceptation**
 - Chaque question possède une réponse expliquée, une catégorie/thématique et un statut de validation.
 - Les examens blancs sont reproductibles et ne modifient pas les données personnelles sans action de l'utilisateur.
-- Les scénarios distinguent clairement schémas pédagogiques, illustrations générées et photographies documentaires.
-- Le contenu ne se présente pas comme un examen officiel.
+- Le contenu ne se présente jamais comme un examen officiel.
 
 ### P5 — Architecture et plateforme multi-acteurs (après validation P0–P4)
 
@@ -227,19 +213,57 @@ Décision CTO : cette architecture est la **cible fonctionnelle** ; l'applicatio
 - Aucun projet cloud ou service payant n'est créé sans accord explicite.
 - La PWA de base reste utilisable sans compte.
 
-### P6 — Pilote terrain et préparation commerciale
+### P6 — Stratégie de monétisation (décision CTO du 4 novembre 2026) et pilote terrain
+
+> Décision : « coût zéro par défaut » est une règle **d'exploitation** (aucune dépense sans accord), pas un engagement que l'application reste gratuite pour les citoyens. Le cœur pédagogique citoyen reste **gratuit, hors ligne et sans compte — de façon permanente** : c'est le produit d'appel public et l'argument de rachat institutionnel. La monétisation vise les **organisations** (institutions, auto-écoles, ONG, sponsors), jamais une barrière devant l'apprenant.
+
+**Modèles autorisés, par ordre de priorité**
+
+| Priorité | Modèle | Qui paie | Montant indicatif | Prérequis |
+|---|---|---|---|---|
+| 1 | **Licence institutionnelle (B2G)** | Ministères, DGT, ANASER, communes | Licence annuelle sur devis | Pilote mesuré + rapport de données + conformité P3 |
+| 2 | **Abonnement auto-écoles (B2B)** | Établissements (suivi moniteur/candidat, rapports) | Abonnement mensuel par établissement | Backend P5 sécurisé + support défini |
+| 3 | **Conventions programmes (B2B)** | ONG, fondations, entreprises de transport | Sur devis (personnalisation, rapports d'impact) | Accord signé, périmètre écrit |
+| 4 | **Parrainage de campagnes** | Assurances, télécoms, pétroliers | Sponsor d'un module ou d'une campagne | Audience mesurée ; aucune influence éditoriale sur les contenus de sécurité |
+| 5 | **Freemium citoyen** | Candidat souhaitant des fonctions avancées | 500–2 000 F CFA/mois via paiement mobile | Backend sécurisé, CGU, support, remboursement — **en dernier seulement** |
+| — | Publicité tiers | Annonceurs | — | ❌ **Modèle interdit** : incompatible avec la mission de sécurité |
+
+**Séquence de passage (seuils obligatoires)**
+
+1. **Gratuit citoyen** (permanent) → adoption et données d'usage locales.
+2. → **Pilote mesuré** (2-3 écoles de Bamako ; activation, complétion, réussite, rétention) : condition d'entrée = protocole écrit, consentements, anonymisation.
+3. → **Rapport de données anonymisé** : condition d'entrée = pilote terminé avec effectif et limites documentés.
+4. → **Contrats B2G/B2B** : condition d'entrée = rapport remis + référentiel P3 validé + engagement de maintenance écrit.
+5. → **Backend multi-acteurs (P5)** : condition d'entrée = **au moins un contrat signé** le justifiant (jamais de backend spéculatif).
+6. → **Freemium citoyen** : condition d'entrée = backend en production, paiements mobiles intégrés, CGU/remboursement publiées, support assuré — et seulement si un besoin citoyen réel est démontré.
+
+**Règles de la monétisation**
+- Aucun contenu de sécurité ne devient jamais payant pour un citoyen malien.
+- Le parrainage n'achète aucune influence sur les contenus pédagogiques ni les corrections.
+- Chaque offre institutionnelle inclut la gratuité citoyenne comme clause : l'État finance l'accès public, il ne paie pas un péage.
+- Tout chiffre présenté dans une négociation est sourcé et daté (règle P3).
+- Le freemium n'est activé qu'après décision écrite du porteur, avec seuils de révocation définis.
 
 **Tâches**
 - P6.1 Organiser un pilote avec un petit groupe de candidats, moniteurs et partenaires au Mali.
 - P6.2 Mesurer activation, complétion, erreurs fréquentes, rétention, réussite aux exercices et retours d'accessibilité.
 - P6.3 Faire signer des accords pilotes et clarifier les responsabilités avant traitement de données réelles.
-- P6.4 Définir les offres particuliers/auto-écoles/ONG/institutions seulement après validation du besoin et des coûts.
-- P6.5 Ne pas activer paiement avant sécurisation du backend, support, conditions et politique de remboursement.
+- P6.4 Définir les offres (particuliers/auto-écoles/ONG/institutions) sur la base du rapport pilote, jamais d'estimations théoriques seules.
+- P6.5 Ne pas activer le paiement avant sécurisation du backend, support, conditions et politique de remboursement.
+- P6.6 Produire le one-pager institutionnel et le tenir à jour à chaque fusion majeure.
 
 **Critères d'acceptation**
 - Un rapport pilote anonymisé présente méthode, effectif, limites et résultats.
 - Les tarifs sont basés sur des coûts observés et des retours clients, pas sur une estimation théorique seule.
 - Aucune promesse de certification officielle ou de réussite à l'examen n'est faite.
+- La gratuité citoyenne est contractuellement garantie dans chaque offre.
+
+### P7 — Sources officielles et suivi des apprenants
+
+**Tâches**
+- P7.1 Maintenir le registre des sources à jour à chaque évolution réglementaire.
+- P7.2 Conserver la progression locale de l'apprenant comme donnée personnelle minimale, exportable et supprimable.
+- P7.3 Documenter publiquement ce qui est collecté (rien, à ce jour) et ce qui le serait après backend.
 
 ## Matrice minimale anti-régression à exécuter pour chaque PR
 
@@ -259,25 +283,28 @@ Décision CTO : cette architecture est la **cible fonctionnelle** ; l'applicatio
 | Juridique | Source primaire et date pour chaque règle | Oui pour publier le contenu concerné |
 | Marque | Graphie alternative du nom interdite dans tout fichier du dépôt | Oui (verrou définitif) |
 | Architecture | Aucun module retiré ni inaccessible lors d'un regroupement d'espaces | Oui |
+| Monétisation | Aucun péage devant un contenu de sécurité citoyen ; aucun paiement sans backend sécurisé et CGU | Oui |
 
 ## Ordre d'exécution et décisions de passage
 
-1. **Lot 0 :** établir la base de référence et les tests de non-régression (P0).
-2. **Lot 1 :** accueil et navigation en six espaces, puis sécuriser Bamanankan et les parcours vocaux (P1).
-3. **Lot 2 :** vérifier PWA/offline/mobile (P2).
-4. **Lot 3 :** auditer et faire valider le référentiel malien (P3).
-5. **Lot 4 :** enrichir la pédagogie avec contrôle qualité (P4).
-6. **Lot 5 :** architecture multi-acteurs après décision coût/confidentialité (P5).
-7. **Lot 6 :** pilote terrain et modèle économique (P6).
+1. **Lot 0 :** base de référence et tests de non-régression (P0).
+2. **Lot 1 :** accueil et navigation en six espaces, langues et voix (P1).
+3. **Lot 2 :** PWA/offline/mobile (P2).
+4. **Lot 3 :** référentiel malien validé (P3).
+5. **Lot 4 :** pédagogie enrichie avec contrôle qualité (P4).
+6. **Lot 5 :** architecture multi-acteurs — **uniquement après un premier contrat signé** (P5).
+7. **Lot 6 :** pilote terrain, rapport de données, offres commerciales (P6).
+8. **Lot 7 :** sources et suivi (P7).
 
-Une PR ne passe à l'étape suivante que si ses tests passent, si le diff est relu et si aucune régression n'est ouverte. Les PR existantes doivent être examinées et comparées à ce plan avant fusion ; aucune fusion automatique n'est autorisée par ce document.
+Une PR ne passe à l'étape suivante que si ses tests passent, si le diff est relu et si aucune régression n'est ouverte. Aucune fusion automatique n'est autorisée par ce document.
 
 ## Sources de référence à maintenir à jour
 
 - Journal officiel du Mali / Secrétariat général du Gouvernement : https://sgg-mali.ml/
 - Démarches administratives du Mali — obtention du permis : https://demarchesadministratives.gouv.ml/permis-de-conduire-obtention/
-- ANASER : rechercher les publications et statistiques officielles les plus récentes auprès de l'agence.
+- OMS — Rapport sur la sécurité routière dans la Région africaine, 2023 : https://afro.who.int/
+- ANASER : publications et statistiques officielles les plus récentes.
 - Toute source lexicographique Bamanankan reste une aide linguistique, pas une validation institutionnelle des termes routiers.
 
 ---
-Dernière mise à jour : 4 novembre 2026 (architecture fonctionnelle cible adoptée : six espaces, méthode VOIR→ÉCOUTER→COMPRENDRE→CHOISIR→AGIR→RÉPÉTER, taxonomie des contenus à trois étiquettes, feuille de route P1–P7, interdits architecturaux et stratégie de migration progressive Strangler Fig).
+Dernière mise à jour : 4 novembre 2026, seconde révision (stratégie de monétisation consignée en P6 : gratuité citoyenne permanente, 5 modèles autorisés par priorité, seuils de passage obligatoires entre étapes, publicité interdite ; audio Bamanankan différé avec chemins documentés ; one-pager institutionnel livré hors dépôt).
