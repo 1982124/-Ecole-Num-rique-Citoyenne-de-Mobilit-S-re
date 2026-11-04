@@ -15,7 +15,7 @@
     { id: 'view-resources', name: '06 Ressources', icon: '\ud83d\uddc2', hint: 'Sources, glossaire, urgence' }
   ];
 
-  /* Table de correspondance complète espace cible. Le contrôle qualité peut vérifier
+  /* Table de correspondance espace cible. Le contrôle qualité peut vérifier
      que chaque espace reste accessible. */
   window.MBK_SPACE_MAP = Object.freeze({
     'view-home': 'view-home',
@@ -26,8 +26,9 @@
     'view-resources': 'view-resources'
   });
 
-  /* Les écrans absorbés dans 06 Ressources restent accessibles : hub + ancres directes. */
-  window.MBK_ABSORBED = Object.freeze([]);
+  /* Les écrans absorbés dans 06 Ressources restent accessibles : hub + ancres directes.
+     Ne PAS figer ce tableau : il re\u00e7oit les onglets absorbés \u00e0 l\u2019ex\u00e9cution. */
+  window.MBK_ABSORBED = [];
 
   function applyTabs() {
     var tabs = document.querySelector('.tabs');
@@ -76,6 +77,7 @@
 
   /* 2. HUB RESSOURCES : porte d'entrée des écrans absorbés par l'espace 06. */
   function buildResourcesHub() {
+    if (window.MBK_ABSORBED.length === 0) return;
     var view = document.getElementById('view-resources');
     if (!view || view.dataset.hubBuilt === '1') return;
     view.dataset.hubBuilt = '1';
@@ -92,6 +94,7 @@
     var hub = document.createElement('div');
     hub.className = 'mbk-hub';
     hub.id = 'mbk-resources-hub';
+    hub.innerHTML = '<h3>Regroup\u00e9s dans cet espace</h3><p>Contenus regroup\u00e9s dans 06 Ressources lors de la r\u00e9organisation en six espaces. Rien n\u2019a \u00e9t\u00e9 supprim\u00e9.</p>';
     var links = document.createElement('div');
     links.className = 'mbk-hub-links';
     window.MBK_ABSORBED.forEach(function (absorbed) {
@@ -100,12 +103,14 @@
       btn.textContent = absorbed.label;
       btn.addEventListener('click', function () {
         var tab = document.getElementById(absorbed.tabId);
-        if (tab) { tab.hidden = false; tab.click(); window.setTimeout(function () { tab.hidden = true; }, 300); }
+        if (tab) {
+          tab.hidden = false;
+          tab.click();
+          window.setTimeout(function () { tab.hidden = true; }, 300);
+        }
       });
       links.appendChild(btn);
     });
-    if (window.MBK_ABSORBED.length === 0) return;
-    hub.innerHTML = '<h3>Regroup\u00e9s dans cet espace</h3><p>Contenus regroup\u00e9s dans 06 Ressources lors de la r\u00e9organisation en six espaces. Rien n\u2019a \u00e9t\u00e9 supprim\u00e9.</p>';
     hub.appendChild(links);
     view.insertBefore(hub, view.firstChild);
   }
@@ -120,7 +125,6 @@
       '#mbk-improvements{grid-column:1/-1;margin:4px 0 2px;padding:13px 16px;border-radius:14px;border:1px solid #ffffff2e;background:#ffffff10}' +
       '#mbk-improvements h2{font-size:15px;margin:0 0 6px;color:#f9d616;letter-spacing:.3px}' +
       '#mbk-improvements ul{margin:0;padding-left:18px;color:#eef5ef;font-size:13.5px;line-height:1.7}' +
-      '#mbk-improvements li{margin:0}' +
       '@media(max-width:640px){#mbk-improvements{padding:11px 13px}#mbk-improvements ul{font-size:12.5px}}';
     document.head.appendChild(style);
     var block = document.createElement('div');
