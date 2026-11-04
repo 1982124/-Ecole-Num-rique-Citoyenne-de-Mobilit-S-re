@@ -1,16 +1,26 @@
 # Protocole de pilote terrain — Mali BOLIFEN KALANSO
 
-> Document opérationnel P6.1–P6.3 du plan CTO (version du 4 novembre 2026).
+> Document opérationnel P6.1–P6.3 du plan CTO.
 > Objectif : produire la **preuve par les données** — un rapport d'usage anonymisé qui fonde les premières offres B2G/B2B (seuils de passage de la stratégie de monétisation).
 > Statut : à signer avec les partenaires avant tout traitement de données réelles (P6.3). Tant que ce document n'est pas signé, aucune collecte ne démarre.
 
+## Journal des révisions
+
+| Version | Date | Motif | Signataire |
+|---|---|---|---|
+| 1.0 | 4 novembre 2026 | Création initiale (PR #31) | Porteur du projet |
+| 1.1 | 4 novembre 2026 | Ajouts après audit des meilleures pratiques : question de mesure unique en tête, pré-test (dry run) obligatoire, seuil d'abandon, coordinateurs désignés, annexe D (règles de rédaction des résultats) | Porteur du projet |
+
 ## 0. Cadre et principes
 
+- **Question de mesure unique** (tout le protocole y répond) : *« L'usage de l'application pendant 4 semaines, en complément de la préparation classique, améliore-t-il les scores d'examen blanc et la complétion du parcours pédagogique chez des candidats encadrés par des auto-écoles à Bamako ? »*
 - **Finalité unique** : mesurer l'efficacité pédagogique et l'usage réel de l'application auprès de candidats au permis encadrés par des auto-écoles partenaires à Bamako.
+- **Pré-test (dry run) obligatoire** : avant toute session S0 réelle, le Porteur exécute une répétition interne complète de S0 (90 min) avec au moins deux personnes jouant le candidat. Les frictions constatées (installation, formulation du consentement, rythme, matériel) sont corrigées avant le pilote. **Aucun pilote ne démarre sans ce pré-test consigné** (date, anomalies, corrections).
 - **Principes du plan CTO applicables** : coût zéro (aucun outil payant), confidentialité (données minimales, anonymisation), aucune promesse de réussite à l'examen, aucune certification officielle.
 - **Durée** : 4 semaines (28 jours) par cohorte.
 - **Effectif cible** : 30 à 60 candidats, 2 à 3 auto-écoles partenaires.
 - **Matériel** : téléphones Android entrée de gamme (le public cible réel) fournis par les participants eux-mêmes ou prêtés par l'auto-école ; l'application est installable depuis le navigateur, aucune installation d'application payante.
+- **Condition préalable technique** : le journal de test manuel (`docs/JOURNAL-TEST-MANUEL.md`) doit être passé au vert sur le domaine de référence avant le recrutement — on ne pilote pas une application qui perd la progression de ses testeurs.
 
 ## 1. Partenaires et rôles
 
@@ -20,6 +30,8 @@
 | **Auto-école partenaire** | Recrutement des candidats, local d'accueil, moniteur référent, respect du protocole |
 | **Moniteur référent** | Animation des sessions hebdomadaires, observations de terrain consignées |
 | **Candidat participant** | Usage de l'application, consentement éclairé, retours d'expérience |
+
+> À la signature de chaque accord, un **coordinateur pilote** est désigné **nommément** côté Porteur et un **moniteur référent** nommément côté Établissement (article 11 de l'accord-type). Un pilote sans coordinateur nommé ne démarre pas.
 
 ## 2. Méthodologie
 
@@ -65,7 +77,11 @@
 | Satisfaction | Échelle simple 1-5 à l'entretien de sortie | ≥ 4/5 |
 | Difficultés techniques | Journal des incidents (installation, hors-ligne, petit écran) | Documenté, sans cible |
 
-Les cibles indicatives ne sont pas des promesses : elles structurent la lecture des résultats. Un pilote « échoué » documenté honnêtement vaut mieux qu'un succès embellis — c'est ce qui crédibilise le rapport auprès des institutions.
+Les cibles indicatives ne sont pas des promesses : elles structurent la lecture des résultats (voir annexe D). Un pilote « échoué » documenté honnêtement vaut mieux qu'un succès embellis — c'est ce qui crédibilise le rapport auprès des institutions.
+
+### 2.6 Seuil d'abandon — garde-fou
+
+Si **plus de 40 %** des participants du groupe principal se sont retirés avant la fin de S2, le pilote est **suspendu** : analyse des causes (installation, contenu, rythme, matériel), correction éventuelle, puis décision écrite de reprise ou d'arrêt. Cette suspension et ses enseignements sont consignés dans le rapport final — un pilote interrompu honnêtement vaut mieux qu'un pilote mené jusqu'au bout sur une base vacillante.
 
 ## 3. Consentement et confidentialité (P6.3 — bloquant)
 
@@ -99,6 +115,7 @@ Les cibles indicatives ne sont pas des promesses : elles structurent la lecture 
 8. **Propriété** : l'application reste la propriété du Porteur ; les relevés produits dans le cadre du pilote sont co-détenus et utilisables par les deux parties, le rapport final étant rédigé par le Porteur.
 9. **Durée et sortie** : 4 semaines à compter de la session S0 ; sortie anticipée possible par notification écrite 7 jours à l'avance.
 10. **Communication** : aucune communication publique conjointe sans accord écrit préalable des deux parties.
+11. **Coordinateurs désignés** : le présent accord désigne nommément le coordinateur pilote côté Porteur, [nom, fonction, contact], et le moniteur référent côté Établissement, [nom, contact]. Tout changement de coordinateur est notifié par écrit à l'autre partie.
 
 Fait à Bamako, le [date], en deux exemplaires.
 
@@ -117,7 +134,7 @@ Le Porteur : [nom, signature] — L'Établissement : [nom, fonction, signature, 
 Structure imposée du rapport :
 1. Contexte et protocole résumé (effectifs réels, dates, lieux).
 2. Résultats par métrique, avec écarts aux cibles indicatives.
-3. Analyse honnête : limites méthodologiques (effectif, auto-sélection, déclaratif), incidents techniques.
+3. Analyse honnête : limites méthodologiques (effectif, auto-sélection, déclaratif), incidents techniques, suspensions éventuelles (section 2.6).
 4. Verbatims anonymisés (sélection, validés par les participants lors de l'entretien de sortie quand c'est possible).
 5. Recommandations produits (corrections, priorités).
 6. Conclusion factuelle : **aucune généralisation au-delà de l'échantillon** ; ce rapport ouvre la discussion des offres (licence institutionnelle, abonnement auto-écoles) selon les seuils de passage du plan CTO, il ne les valide pas seul.
@@ -141,5 +158,18 @@ Date | Code participant | Session | Observation (incident, difficulté, anecdote
 
 Code | Semaine | Leçons terminées | Quiz réussis/ tentés | Score examen | Parcours immersif (x/10 scènes) | Voix off utilisée (oui/non) | Remarque
 
+## Annexe D — Règles de rédaction des résultats : cibles indicatives, jamais des promesses
+
+1. **Étiqueter chaque chiffre comme « cible indicative » dès l'écriture** — jamais « objectif garanti ».
+2. **Une cible sert à lire un résultat, pas à le prédéterminer** : si l'activation mesure 65 %, le rapport documente 65 % et analyse pourquoi.
+3. **Aucune cible ne devient un argument commercial à l'avance** : le rapport ouvre la discussion des offres, il ne les valide pas seul.
+4. **Écrire les limites AVANT de connaître les résultats** : effectif faible, auto-sélection des volontaires, mesures déclaratives, absence de randomisation.
+5. **Distinguer ce qui est mesuré de ce qui est espéré** : « les participants du pilote ont mesuré X » — jamais « nos utilisateurs apprennent ».
+6. **Aucune extrapolation au-delà de l'échantillon** : pas de généralisation à « les candidats maliens » à partir de 30-60 personnes à Bamako.
+7. **Un échec documenté vaut plus qu'un succès embellis** : une cible manquée + cause identifiée est une feuille de route, pas une honte.
+8. **Interdire le langage promissoire dans tout le périmètre du pilote** — ni dans l'app, ni dans le rapport, ni auprès des auto-écoles.
+
+Test de conformité avant de publier tout chiffre : *« Si ce nombre est faux ou inférieur dans 3 mois, ce document m'embarrasse-t-il ? »* Si oui → réécrire en « cible indicative » ou en « résultat mesuré sur N participants, du X au Y ». Le seul endroit où une cible devient un engagement est un **contrat signé**, et uniquement sous forme d'engagements de moyens (livrer, maintenir, mettre à jour), jamais de résultats (réussite, accidents).
+
 ---
-Document de travail du 4 novembre 2026. À relire par un juriste malien compétent avant la première signature (section 3.3). Version : 1.0 — à incrémenter à chaque révision signée.
+Document de travail du 4 novembre 2026, version 1.1. À relire par un juriste malien compétent avant la première signature (section 3.3). Version à incrémenter à chaque révision signée.
