@@ -17,11 +17,12 @@ window.APP_TITLE = window.APP_CONFIG.brandBase + ' : ' + window.APP_CONFIG.count
  * Couture provisoire (Strangler Fig) : chargeur des modules de données nationales.
  * Regroupe profil pays, sources officielles, constats OMS, galerie Bamako,
  * examen blanc, panneaux complémentaires, accueil canonique, hero photo,
- * parcours narratif, panneaux lot 2, banque de quiz lot 2 et voix off française.
+ * parcours narratif, panneaux lot 2, banque de quiz lot 2, voix off française
+ * et navigation en six espaces (P1.A).
  * À remplacer par des balises <script> explicites dans index.html lors du lot suivant.
  */
 (function () {
-  var modules = ['/country-profile.js', '/official-sources.js', '/who-road-facts.js', '/bamako-gallery.js', '/quiz-exam.js', '/signs-extra.js', '/home-canonical.js', '/hero-bamako.js', '/journee-bamako.js', '/signs-extra2.js', '/quiz-bank2.js', '/audio-voiceover.js'];
+  var modules = ['/country-profile.js', '/official-sources.js', '/who-road-facts.js', '/bamako-gallery.js', '/quiz-exam.js', '/signs-extra.js', '/home-canonical.js', '/hero-bamako.js', '/journee-bamako.js', '/signs-extra2.js', '/quiz-bank2.js', '/audio-voiceover.js', '/spaces-navigation.js'];
   function boot() {
     modules.forEach(function (src) {
       var s = document.createElement('script');
