@@ -126,4 +126,11 @@ for (const file of titleSourceFiles) {
   if (!content.includes(OFFICIAL_BASE_TITLE)) throw new Error('Libellé officiel de l’école absent de : ' + file + ' — attendu : « École Numérique Citoyenne pour une Mobilité Sûre ».');
   if (FORBIDDEN_OLD_TITLE.test(content)) throw new Error('Graphie ancienne « Numérique et Citoyenne » interdite dans : ' + file + ' — le libellé officiel est « École Numérique Citoyenne pour une Mobilité Sûre ».');
 }
+const OFFICIAL_FULL_TITLE = 'École Numérique Citoyenne pour une Mobilité Sûre : MALI BOLIFEN KALANSO';
+const indexTitle = fs.readFileSync(path.join(root, 'public/index.html'), 'utf8');
+if (!indexTitle.includes('<title>' + OFFICIAL_FULL_TITLE + '</title>') || !indexTitle.includes('id="brand-title">' + OFFICIAL_FULL_TITLE + '</h1>')) throw new Error('Le titre officiel exact doit être présent dans le titre HTML et le titre visible de l’accueil.');
+if (!config.includes("countrySuffix: 'MALI BOLIFEN KALANSO'") || !countryProfile.includes("editionName:'MALI BOLIFEN KALANSO'")) throw new Error('La casse officielle MALI BOLIFEN KALANSO doit être cohérente dans la configuration et le profil national.');
+if (manifest.name !== OFFICIAL_FULL_TITLE || manifest.short_name !== 'MALI BOLIFEN KALANSO') throw new Error('Le manifeste PWA doit utiliser le nom officiel exact.');
+const packageJson = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
+if (packageJson.description !== OFFICIAL_FULL_TITLE) throw new Error('La description du package doit porter le nom officiel exact.');
 console.log('Contrôles réussis : ' + (lessons + extraSigns) + ' panneaux, ' + bamakoCases + ' cas de Bamako, ' + nationalCases + ' cas nationaux, ' + goodPractices + ' bonnes conduites, quiz, PWA, profil national, sources officielles, constats OMS, galerie Bamako et nom officiel vérifié dans ' + scannedFiles + ' fichiers du dépôt.');
