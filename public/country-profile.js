@@ -2,7 +2,7 @@
 /* Profil national pilote Mali. Les modules pédagogiques existants restent spécifiques au Mali. */
 window.MOBILITY_COUNTRY_PROFILE = Object.freeze({
   code:'ML', country:'Mali', editionName:'MALI BOLIFEN KALANSO',
-  officialTitle:'École Numérique et Citoyenne pour une Mobilité Sûre',
+  officialTitle:'École Numérique Citoyenne pour une Mobilité Sûre',
   defaultLanguage:'fr',
   languages:[{code:'fr',name:'Français',status:'active'},{code:'bm',name:'Bamanankan',status:'partial-review-required'}],
   currency:'XOF',
