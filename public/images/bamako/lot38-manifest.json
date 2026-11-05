@@ -1,0 +1,128 @@
+{
+  "lot": "38",
+  "product": "MALI BOLIFEN KALANSO",
+  "branch": "feat/lot38-bamako-assets-integration",
+  "source": "Archive TAR inspected locally; assets are AI-generated realistic Mali/Bamako instructional scenes, not documentary photographs.",
+  "integration_status": "pending_binary_upload",
+  "assets": [
+    {
+      "source_file": "public/images/bamako/hero-bamako-carrefour.png",
+      "target_file": "public/images/bamako/hero-bamako-carrefour.png",
+      "section": "hero",
+      "description": "Hero principal : carrefour urbain de Bamako",
+      "status": "pending_binary_upload"
+    },
+    {
+      "source_file": "public/images/bamako/carrefour-hamdallaye.png",
+      "target_file": "public/images/bamako/carrefour-hamdallaye.png",
+      "section": "case-hamdallaye",
+      "description": "Cas pratique : approche du carrefour de Hamdallaye",
+      "status": "pending_binary_upload"
+    },
+    {
+      "source_file": "public/images/bamako/roundabout-bamako.png",
+      "target_file": "public/images/bamako/roundabout-bamako.png",
+      "section": "lesson-roundabout",
+      "description": "Leçon : rond-point et priorité",
+      "status": "pending_binary_upload"
+    },
+    {
+      "source_file": "public/images/bamako/road-signs-bamako.png",
+      "target_file": "public/images/bamako/road-signs-bamako.png",
+      "section": "lesson-signs",
+      "description": "Leçon : signalisation routière",
+      "status": "pending_binary_upload"
+    },
+    {
+      "source_file": "public/images/bamako/driving-instructor-student.png",
+      "target_file": "public/images/bamako/driving-instructor-student.png",
+      "section": "lesson-training",
+      "description": "Apprentissage accompagné en auto-école",
+      "status": "pending_binary_upload"
+    },
+    {
+      "source_file": "public/images/bamako/car-dashboard-interior.png",
+      "target_file": "public/images/bamako/car-dashboard-interior.png",
+      "section": "vehicle-check-interior",
+      "description": "Contrôle intérieur du véhicule",
+      "status": "pending_binary_upload"
+    },
+    {
+      "source_file": "public/images/bamako/car-exterior-check.png",
+      "target_file": "public/images/bamako/car-exterior-check.png",
+      "section": "vehicle-check-exterior",
+      "description": "Contrôle extérieur du véhicule",
+      "status": "pending_binary_upload"
+    },
+    {
+      "source_file": "public/images/bamako/parked-cars-bamako.png",
+      "target_file": "public/images/bamako/parked-cars-bamako.png",
+      "section": "case-parking",
+      "description": "Stationnement et environnement urbain",
+      "status": "pending_binary_upload"
+    },
+    {
+      "source_file": "public/images/bamako/rainy-driving-bamako.png",
+      "target_file": "public/images/bamako/rainy-driving-bamako.png",
+      "section": "case-rain",
+      "description": "Conduite sous la pluie à Bamako",
+      "status": "pending_binary_upload"
+    },
+    {
+      "source_file": "public/images/bamako/emergency-scene-bamako.png",
+      "target_file": "public/images/bamako/emergency-scene-bamako.png",
+      "section": "case-emergency",
+      "description": "Sécurisation d'une scène d'urgence",
+      "status": "pending_binary_upload"
+    },
+    {
+      "source_file": "public/images/bamako/case-moto-taxi.png",
+      "target_file": "public/images/bamako/case-moto-taxi.png",
+      "section": "case-moto-taxi",
+      "description": "Interaction avec moto-taxi",
+      "status": "pending_binary_upload"
+    },
+    {
+      "source_file": "public/images/bamako/case-night-driving.png",
+      "target_file": "public/images/bamako/case-night-driving.png",
+      "section": "case-night",
+      "description": "Conduite de nuit",
+      "status": "pending_binary_upload"
+    },
+    {
+      "source_file": "public/images/bamako/case-pedestrian-crossing.png",
+      "target_file": "public/images/bamako/case-pedestrian-crossing.png",
+      "section": "case-pedestrians",
+      "description": "Traversée de piétons",
+      "status": "pending_binary_upload"
+    },
+    {
+      "source_file": "public/images/bamako/case-rainy-flood.png",
+      "target_file": "public/images/bamako/case-rainy-flood.png",
+      "section": "case-flood",
+      "description": "Chaussée inondée après la pluie",
+      "status": "pending_binary_upload"
+    },
+    {
+      "source_file": "public/images/bamako/case-roundabout-approach.png",
+      "target_file": "public/images/bamako/case-roundabout-approach.png",
+      "section": "case-roundabout",
+      "description": "Approche d'un rond-point",
+      "status": "pending_binary_upload"
+    },
+    {
+      "source_file": "public/images/bamako/case-school-zone.png",
+      "target_file": "public/images/bamako/case-school-zone.png",
+      "section": "case-school",
+      "description": "Zone scolaire : à localiser et franciser avant publication",
+      "status": "pending_binary_upload"
+    }
+  ],
+  "visual_qa_blockers": [
+    "case-school-zone.png contient le texte anglais SCHOOL ZONE : ne pas publier avant remplacement ou correction en français.",
+    "driving-instructor-student.png : vérifier la graphie visible AUTO-ÉCOLE.",
+    "Contrôler les panneaux, marquages et comportements de circulation pour éviter d'enseigner une règle non conforme au contexte malien.",
+    "Ne pas présenter ces illustrations générées comme des photographies documentaires.",
+    "Aucune image ne doit être réutilisée sur plusieurs sections du home."
+  ]
+}
