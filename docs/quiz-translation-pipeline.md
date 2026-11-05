@@ -1,4 +1,4 @@
-# Pipeline de traduction des quiz — BOLIFENKO KALANSO
+# Pipeline de traduction des quiz — MALI BOLIFEN KALANSO
 
 ## État de l'intégration
 

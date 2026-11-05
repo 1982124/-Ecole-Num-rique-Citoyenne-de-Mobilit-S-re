@@ -1,4 +1,4 @@
--- BOLIFENKO KALANSO — socle multilingue des quiz
+-- MALI BOLIFEN KALANSO — socle multilingue des quiz
 -- À exécuter dans le projet Supabase dédié après vérification du schéma existant.
 -- Ne modifie aucune question déjà présente et ne publie aucune traduction non validée.
 
