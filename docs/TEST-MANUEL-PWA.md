@@ -6,7 +6,7 @@
 
 ## A. Première visite en ligne
 - [ ] La page d'accueil charge sans erreur JavaScript (console ouverte, aucun log d'erreur bloquant).
-- [ ] Le nom affiché est exactement « Mali BOLIFEN KALANSO » et « École Numérique et Citoyenne pour une Mobilité Sûre » (aucune graphie ancienne).
+- [ ] Le nom affiché est exactement « Mali Bolifen Kalanso » et « École Numérique Citoyenne pour une Mobilité Sûre » (aucune graphie ancienne).
 - [ ] Onglet « Sources officielles » : 5 cartes, liens DGT et SGG fonctionnels, avertissement d'exactitude réglementaire affiché, date de vérification visible.
 - [ ] Onglet « Enjeux OMS » : chiffres 225 482 (2021), 19 %, +17 % affichés ; mention « données régionales, pas des statistiques nationales maliennes » ; source afro.who.int cliquable avec date de consultation.
 - [ ] Onglet « Immersion à Bamako » : 7 photographies chargées, chaque carte ouvre sa page Wikimedia Commons (auteur et licence).

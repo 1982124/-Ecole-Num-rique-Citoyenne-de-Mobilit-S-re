@@ -1,6 +1,6 @@
-# MALI BOLIFEN KALANSO
+# Mali Bolifen Kalanso
 
-**École Numérique et Citoyenne pour une Mobilité Sûre : MALI BOLIFEN KALANSO** — outil pédagogique indépendant de sensibilisation et de préparation à la sécurité routière, conçu pour les téléphones modestes et les connexions irrégulières.
+**École Numérique Citoyenne pour une Mobilité Sûre : Mali Bolifen Kalanso** — outil pédagogique indépendant de sensibilisation et de préparation à la sécurité routière, conçu pour les téléphones modestes et les connexions irrégulières.
 
 ## Périmètre national
 Le contenu doit être utile dans toutes les régions du Mali et dans le District de Bamako : centres urbains, périphéries, villages, marchés, abords d’écoles, routes interurbaines, axes ruraux, traversées d’animaux, chantiers, hivernage et déplacements nocturnes. Les huit exemples localisés à Bamako restent des cas particuliers parmi des situations nationales ; ils ne définissent pas à eux seuls le territoire couvert.
@@ -15,7 +15,7 @@ Le contenu doit être utile dans toutes les régions du Mali et dans le District
 - 22 situations interactives : 8 exemples localisés à Bamako, 8 situations complémentaires couvrant des contextes urbains, villageois, ruraux et interurbains, en plus des situations déjà présentes dans le socle.
 - 8 scènes immersives d’apprentissage et 8 engagements de bonnes conduites.
 - **Profil national Mali** (identification, langues, autorités, garde-fous de validation) dans `public/country-profile.js`.
-- **Rubrique Sources officielles** (DGT, SGG, loi n° 2023-045, décret n° 2023-0509) dans `public/official-sources.js`.
+- **Rubrique Sources officielles** (DGT, SGG, loi n° 2023-045, décret 2023-0509) dans `public/official-sources.js`.
 - **Constats OMS sourcés** (225 482 décès routiers estimés dans la Région africaine en 2021, 19 % du fardeau mondial, +17 % depuis 2010) dans `public/who-road-facts.js` — données régionales, explicitement distinctes de statistiques nationales maliennes.
 - **Galerie « Immersion à Bamako »** : 7 photographies réelles de Wikimedia Commons avec licence liée à chaque image, dans `public/bamako-gallery.js`.
 - Application web installable (PWA) et cache hors ligne après une première visite réussie.
