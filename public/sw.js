@@ -1,5 +1,5 @@
 'use strict';
-const CACHE_NAME = 'mbk-shell-v20';
+const CACHE_NAME = 'mbk-shell-v21';
 /* La photo hero webp n'est PAS dans l'app shell tant qu'elle n'est pas dans le dépôt :
    check-pwa.js exige que chaque ressource précachée existe réellement (contrôle pertinent).
    Le hero conserve son triple repli (local → distant → message pédagogique) : aucune casse.
@@ -15,7 +15,7 @@ self.addEventListener('install', (event) => {
         cache.add(url).catch(() => {
           /* Échec silencieux pour ce seul fichier : l'app reste installable et hors ligne. */
         })
-      ))
+      )
     ).then(() => self.skipWaiting())
   );
 });

@@ -1,13 +1,13 @@
 'use strict';
 /* Profil national pilote Mali. Les modules pédagogiques existants restent spécifiques au Mali. */
 window.MOBILITY_COUNTRY_PROFILE = Object.freeze({
-  code:'ML', country:'Mali', editionName:'MALI BOLIFEN KALANSO',
-  officialTitle:'École Numérique et Citoyenne pour une Mobilité Sûre',
+  code:'ML', country:'Mali', editionName:'Mali Bolifen Kalanso',
+  officialTitle:'École Numérique Citoyenne pour une Mobilité Sûre',
   defaultLanguage:'fr',
   languages:[{code:'fr',name:'Français',status:'active'},{code:'bm',name:'Bamanankan',status:'partial-review-required'}],
   currency:'XOF',
   theme:{colors:['#14b24c','#ffcc00','#e03c31'],label:'Vert, jaune, rouge'},
-  geography:{capital:'Bamako',localities:['Bamako','Sikasso','Ségou','Mopti','Kayes','Gao','Tombouctou','Kidal'],roadContexts:['carrefours urbains','marchés','abords des écoles','routes interurbaines','pistes rurales','traversées d’animaux','hivernage','circulation nocturne']},
+  geography:{capital:'Bamako',localities:['Bamako','Sikasso','Ségou','Mopti','Kayes','Gao','Tombouctou','Kidal'],roadContexts:['carrefours urbains','marchés','abords d’écoles','routes interurbaines','pistes rurales','traversées d’animaux','hivernage','circulation nocturne']},
   authorities:[{name:'Direction générale des Transports',url:'https://dgt.gouv.ml/documents',validation:'source-reference'},{name:'Secrétariat général du Gouvernement',url:'https://sgg-mali.ml/fr/le-journal-officiel/le-journal-officiel.html',validation:'source-reference'}],
   visualPolicy:{requiredCountryContext:'Mali',preferredLocality:'Bamako',requireAuthenticLocalPhotography:true,requireLicenseReview:true,prohibitMislabelledGenericImages:true,dignityReviewRequired:true},
   validation:{legalContent:'human-validation-required',translations:'human-validation-required',emergencyNumbers:'verify-before-publication',photographyLicenses:'verify-per-image',nationalStatistics:'use-national-source-only'},

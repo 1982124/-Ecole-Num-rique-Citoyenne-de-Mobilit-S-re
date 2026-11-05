@@ -4,8 +4,8 @@
  * Pour une nouvelle déclinaison, créer un profil validé et remplacer countryCode.
  */
 window.APP_CONFIG = Object.freeze({
-  brandBase: 'École Numérique et Citoyenne pour une Mobilité Sûre',
-  countrySuffix: 'MALI BOLIFEN KALANSO',
+  brandBase: 'École Numérique Citoyenne pour une Mobilité Sûre',
+  countrySuffix: 'Mali Bolifen Kalanso',
   countryCode: 'ML',
   countryProfile: '/country-profile.js',
   defaultLanguage: 'fr',
