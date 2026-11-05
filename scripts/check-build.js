@@ -88,7 +88,7 @@ if (lessons < 20) throw new Error('Le catalogue de leçons est trop court : ' + 
 // Toute graphie alternative du nom est interdite dans TOUT le dépôt, quel que soit le fichier.
 // Balayage récursif de l'ensemble des fichiers texte (hors node_modules, .git et archives de résultats de tests).
 const FORBIDDEN_NAME = /BOLIFENKO\s+KALANSO/i;
-const TEXT_EXTENSIONS = new Set(['.js', '.html', '.css', '.json', '.md', '.txt', '.yml', '.yaml', '.webmanifest', '.svg', '.xml']);
+const TEXT_EXTENSIONS = new Set(['.js', '.html', '.css', '.json', '.md', '.txt', '.yml', '.yaml', '.webmanifest', '.svg', '.xml', '.sql', '.mjs', '.cjs']);
 const SKIP_DIRS = new Set(['node_modules', '.git', 'docs/resultats-tests']);
 let scannedFiles = 0;
 function scanForForbiddenName(dir) {
@@ -112,5 +112,18 @@ const brandingFiles = ['README.md', 'package.json', 'public/config.js', 'public/
 for (const file of brandingFiles) {
   const content = fs.readFileSync(path.join(root, file), 'utf8');
   if (!OFFICIAL_NAME.test(content)) throw new Error('Nom officiel « Mali BOLIFEN KALANSO » absent de : ' + file);
+}
+// Verrou sur le libellé officiel de l'école : « École Numérique Citoyenne pour une Mobilité Sûre ».
+// La graphie ancienne « Numérique et Citoyenne » est interdite dans les sources du titre composé
+// (config.js et country-profile.js produisent le titre affiché, README et package.json le portent).
+// index.html conserve provisoirement son libellé statique de repli : il est remplacé à l'exécution
+// par le titre composé depuis public/config.js et public/country-profile.js (IIFE de surcharge).
+const OFFICIAL_BASE_TITLE = 'École Numérique Citoyenne pour une Mobilité Sûre';
+const FORBIDDEN_OLD_TITLE = /Numérique\s+et\s+Citoyenne/i;
+const titleSourceFiles = ['README.md', 'package.json', 'public/config.js', 'public/country-profile.js'];
+for (const file of titleSourceFiles) {
+  const content = fs.readFileSync(path.join(root, file), 'utf8');
+  if (!content.includes(OFFICIAL_BASE_TITLE)) throw new Error('Libellé officiel de l’école absent de : ' + file + ' — attendu : « École Numérique Citoyenne pour une Mobilité Sûre ».');
+  if (FORBIDDEN_OLD_TITLE.test(content)) throw new Error('Graphie ancienne « Numérique et Citoyenne » interdite dans : ' + file + ' — le libellé officiel est « École Numérique Citoyenne pour une Mobilité Sûre ».');
 }
 console.log('Contrôles réussis : ' + (lessons + extraSigns) + ' panneaux, ' + bamakoCases + ' cas de Bamako, ' + nationalCases + ' cas nationaux, ' + goodPractices + ' bonnes conduites, quiz, PWA, profil national, sources officielles, constats OMS, galerie Bamako et nom officiel vérifié dans ' + scannedFiles + ' fichiers du dépôt.');
