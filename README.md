@@ -1,6 +1,6 @@
-# Mali Bolifen Kalanso
+# École Numérique Citoyenne pour une Mobilité Sûre : MALI BOLIFEN KALANSO
 
-**École Numérique Citoyenne pour une Mobilité Sûre : Mali Bolifen Kalanso** — outil pédagogique indépendant de sensibilisation et de préparation à la sécurité routière, conçu pour les téléphones modestes et les connexions irrégulières.
+**École Numérique Citoyenne pour une Mobilité Sûre : MALI BOLIFEN KALANSO** — outil pédagogique indépendant de sensibilisation et de préparation à la sécurité routière, conçu pour les téléphones modestes et les connexions irrégulières.
 
 ## Périmètre national
 Le contenu doit être utile dans toutes les régions du Mali et dans le District de Bamako : centres urbains, périphéries, villages, marchés, abords d’écoles, routes interurbaines, axes ruraux, traversées d’animaux, chantiers, hivernage et déplacements nocturnes. Les huit exemples localisés à Bamako restent des cas particuliers parmi des situations nationales ; ils ne définissent pas à eux seuls le territoire couvert.
