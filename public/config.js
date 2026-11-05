@@ -5,7 +5,7 @@
  */
 window.APP_CONFIG = Object.freeze({
   brandBase: 'École Numérique Citoyenne pour une Mobilité Sûre',
-  countrySuffix: 'Mali Bolifen Kalanso',
+  countrySuffix: 'MALI BOLIFEN KALANSO',
   countryCode: 'ML',
   countryProfile: '/country-profile.js',
   defaultLanguage: 'fr',
