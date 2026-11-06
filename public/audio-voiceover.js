@@ -11,13 +11,28 @@
   var synth = window.speechSynthesis;
   if (!synth) return;
 
+  /* Sélection de la voix française la plus naturelle disponible sur l'appareil,
+     sans service externe ni cloud TTS (doctrine : synthèse vocale locale, gratuite, hors ligne).
+     Ordre de préférence :
+     1. voix « Google » françaises (Android/Chrome) — les plus naturelles hors ligne ;
+     2. voix naturelles Microsoft (Denise, Eloise, Vivienne) ;
+     3. voix iOS/Safari (Amélie, Audrey, Thomas) ;
+     4. première voix française disponible (repli historique, inchangé) ;
+     5. aucune voix : repli sur la langue fr-FR (inchangé). */
   function pickFrenchVoice() {
     var voices = synth.getVoices();
-    for (var i = 0; i < voices.length; i++) {
+    var i;
+    for (i = 0; i < voices.length; i++) {
       if (/fr[-_]/i.test(voices[i].lang) && /google/i.test(voices[i].name)) return voices[i];
     }
-    for (var j = 0; j < voices.length; j++) {
-      if (/fr[-_]/i.test(voices[j].lang)) return voices[j];
+    for (i = 0; i < voices.length; i++) {
+      if (/fr[-_]/i.test(voices[i].lang) && /(denise|eloise|vivienne)/i.test(voices[i].name)) return voices[i];
+    }
+    for (i = 0; i < voices.length; i++) {
+      if (/fr[-_]/i.test(voices[i].lang) && /(am[ée]lie|audrey|thomas)/i.test(voices[i].name)) return voices[i];
+    }
+    for (i = 0; i < voices.length; i++) {
+      if (/fr[-_]/i.test(voices[i].lang)) return voices[i];
     }
     return null;
   }
@@ -28,7 +43,7 @@
     var u = new SpeechSynthesisUtterance(text);
     var v = pickFrenchVoice();
     if (v) { u.voice = v; u.lang = v.lang; } else { u.lang = 'fr-FR'; }
-    u.rate = 0.95;
+    u.rate = 0.92;
     u.pitch = 1;
     if (onEnd) u.onend = onEnd;
     synth.speak(u);
