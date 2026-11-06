@@ -13,11 +13,25 @@
 
   function pickFrenchVoice() {
     var voices = synth.getVoices();
-    for (var i = 0; i < voices.length; i++) {
-      if (/fr[-_]/i.test(voices[i].lang) && /google/i.test(voices[i].name)) return voices[i];
+    var i, v;
+    /* 1) Google français : la meilleure qualité hors ligne (Android/Chrome). */
+    for (i = 0; i < voices.length; i++) {
+      v = voices[i];
+      if (/fr[-_]/i.test(v.lang) && /google/i.test(v.name)) return v;
     }
-    for (var j = 0; j < voices.length; j++) {
-      if (/fr[-_]/i.test(voices[j].lang)) return voices[j];
+    /* 2) Voix naturelles Microsoft (Edge/Windows) : Denise, Eloise, Vivienne. */
+    for (i = 0; i < voices.length; i++) {
+      v = voices[i];
+      if (/fr[-_]/i.test(v.lang) && /denise|eloise|vivienne/i.test(v.name)) return v;
+    }
+    /* 3) Voix iOS/Safari : Amélie, Audrey, Thomas. */
+    for (i = 0; i < voices.length; i++) {
+      v = voices[i];
+      if (/fr[-_]/i.test(v.lang) && /amélie|amelie|audrey|thomas/i.test(v.name)) return v;
+    }
+    /* 4) Repli : première voix française disponible. */
+    for (i = 0; i < voices.length; i++) {
+      if (/fr[-_]/i.test(voices[i].lang)) return voices[i];
     }
     return null;
   }
@@ -28,7 +42,7 @@
     var u = new SpeechSynthesisUtterance(text);
     var v = pickFrenchVoice();
     if (v) { u.voice = v; u.lang = v.lang; } else { u.lang = 'fr-FR'; }
-    u.rate = 0.95;
+    u.rate = 0.92;
     u.pitch = 1;
     if (onEnd) u.onend = onEnd;
     synth.speak(u);
