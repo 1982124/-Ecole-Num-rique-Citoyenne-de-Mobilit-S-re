@@ -1,21 +1,20 @@
 {
   "id": "/",
-  "name": "MALI BOLIFEN KALANSO",
+  "name": "École Numérique Citoyenne pour une Mobilité Sûre : MALI BOLIFEN KALANSO",
   "short_name": "MALI BOLIFEN KALANSO",
-  "description": "École Numérique Citoyenne pour une Mobilité Sûre : MALI BOLIFEN KALANSO",
   "description": "Apprendre les bons réflexes de sécurité routière au Mali avec des leçons visuelles et des quiz.",
   "lang": "fr",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "duplicate",
+  "background_color": "#f8f7ef",
   "theme_color": "#087a3e",
   "orientation": "any",
   "icons": [
     {
       "src": "/icon.svg",
-      "scope": "/",
       "sizes": "any",
-      "type": "scheck",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ]
