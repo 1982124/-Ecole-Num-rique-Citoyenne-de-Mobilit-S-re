@@ -15,7 +15,7 @@ self.addEventListener('install', (event) => {
         cache.add(url).catch(() => {
           /* Échec silencieux pour ce seul fichier : l'app reste installable et hors ligne. */
         })
-      )
+      ))
     ).then(() => self.skipWaiting())
   );
 });
