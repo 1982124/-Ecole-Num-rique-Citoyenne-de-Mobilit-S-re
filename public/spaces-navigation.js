@@ -115,44 +115,10 @@
     view.insertBefore(hub, view.firstChild);
   }
 
-  /* 3. BANNIÈRE « AMÉLIORATIONS » — transparence des livrables (P6.6). */
-  function buildImprovements() {
-    if (document.getElementById('mbk-improvements')) return;
-    var hero = document.querySelector('.hero');
-    if (!hero) return;
-    var style = document.createElement('style');
-    style.textContent =
-      '#mbk-improvements{grid-column:1/-1;margin:4px 0 2px;padding:13px 16px;border-radius:14px;border:1px solid #ffffff2e;background:#ffffff10}' +
-      '#mbk-improvements h2{font-size:15px;margin:0 0 6px;color:#f9d616;letter-spacing:.3px}' +
-      '#mbk-improvements ul{margin:0;padding-left:18px;color:#eef5ef;font-size:13.5px;line-height:1.7}' +
-      '@media(max-width:640px){#mbk-improvements{padding:11px 13px}#mbk-improvements ul{font-size:12.5px}}';
-    document.head.appendChild(style);
-    var block = document.createElement('div');
-    block.id = 'mbk-improvements';
-    block.setAttribute('role', 'region');
-    block.setAttribute('aria-labelledby', 'mbk-improvements-title');
-    block.innerHTML =
-      '<h2 id="mbk-improvements-title">\u2728 Nouveaut\u00e9s de la version finale</h2>' +
-      '<ul>' +
-      '<li><strong>Navigation en six espaces</strong> : Accueil, Apprendre, S\u2019entra\u00eener, Cas pratiques, Ma progression, Ressources.</li>' +
-      '<li><strong>75 panneaux</strong> de signalisation expliqu\u00e9s en contexte malien.</li>' +
-      '<li><strong>90+ questions</strong> d\u2019entra\u00eenement avec corrections expliqu\u00e9es.</li>' +
-      '<li><strong>Examen blanc</strong> chronom\u00e9tr\u00e9 (40 questions, 35 requises, 30 minutes).</li>' +
-      '<li><strong>Parcours immersif</strong> \u00ab Une journ\u00e9e \u00e0 Bamako \u00bb en 10 sc\u00e8nes r\u00e9elles.</li>' +
-      '<li><strong>Voix off fran\u00e7aise</strong> gratuite (le\u00e7ons, parcours, accueil).</li>' +
-      '<li><strong>100 % hors ligne</strong> apr\u00e8s la premi\u00e8re visite.</li>' +
-      '<li><strong>Sources officielles</strong> cit\u00e9es et dat\u00e9es (textes maliens, OMS).</li>' +
-      '</ul>';
-    var home = document.getElementById('mbk-canonical-home');
-    if (home && home.parentNode === hero) hero.insertBefore(block, home.nextSibling);
-    else hero.appendChild(block);
-  }
-
   applyTabs();
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () { buildResourcesHub(); buildImprovements(); });
+    document.addEventListener('DOMContentLoaded', function () { buildResourcesHub(); });
   } else {
     buildResourcesHub();
-    buildImprovements();
   }
 })();
