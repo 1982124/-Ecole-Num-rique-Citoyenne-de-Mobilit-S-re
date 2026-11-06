@@ -1,5 +1,5 @@
 'use strict';
-const CACHE_NAME = 'mbk-shell-v23';
+const CACHE_NAME = 'mbk-shell-v24';
 /* La photo hero webp n'est PAS dans l'app shell tant qu'elle n'est pas dans le dépôt :
    check-pwa.js exige que chaque ressource précachée existe réellement (contrôle pertinent).
    Le visuel du hero utilise la photo disponible et conserve le schéma SVG déjà présent comme repli. */
