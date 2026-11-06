@@ -50,15 +50,11 @@
       img.src = 'https://mali-bolifen-kalanso.ml/images/bamako/hero-bamako-carrefour.png';
       img.onerror = function () {
         img.remove();
-        tag.textContent = 'Repli p\u00e9dagogique : sch\u00e9ma vectoriel hors ligne';
+        tag.remove();
       };
     };
-    var credit = document.createElement('figcaption');
-    credit.className = 'mbk-hero-photo-institutional-credit';
-    credit.innerHTML = 'Carrefour de Bamako \u2014 photographie utilis\u00e9e par le site de r\u00e9f\u00e9rence <a href="https://mali-bolifen-kalanso.ml" target="_blank" rel="noopener noreferrer">mali-bolifen-kalanso.ml \u2197</a>.';
     figure.appendChild(tag);
     figure.appendChild(img);
-    figure.appendChild(credit);
 
     /* La photo prend la place pleine largeur, sous la bande verte, après le texte institutionnel. */
     var canonicalHome = document.getElementById('mbk-canonical-home');
