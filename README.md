@@ -54,7 +54,7 @@ Le site est servi comme application statique depuis le dossier public. Le serveu
 Les contenus sont des supports pédagogiques de sensibilisation et ne remplacent ni le Code de la route ni les instructions des autorités compétentes au Mali. Aucun certificat de cette application ne doit être présenté comme un permis ou une certification officielle sans habilitation explicite.
 
 ## Parcours particuliers et ONG
-- Un particulier peut consulter le parcours de découverte gratuit et préparer une demande d'accès au futur abonnement individuel accompagné.
+- Un particulier peut consulter le parcours de découverte gratuit et préparer une demande d’accès au futur abonnement individuel accompagné.
 - Les ONG, associations et collectivités disposent de deux modèles de programmes de sensibilisation (local et multi-sites), à adapter aux publics et aux zones d'intervention.
 - Le formulaire actuel prépare un résumé téléchargeable ou copiable sur l'appareil. Il ne transmet pas encore la demande à un serveur : aucun abonnement payant, compte ou paiement n'est activé. L'activation réelle nécessite authentification, base de données, gestion des consentements et intégration d'un moyen de paiement choisi par le projet.
 
@@ -87,7 +87,7 @@ Cette application est le **pilote malien** et le socle de référence pour crée
 
 ### Garde-fous
 - ne jamais présenter une statistique OMS régionale comme une statistique nationale ;
-- ne jamais copier les règles d'un pays vers un autre ;
+- ne jamais copier les règles d’un pays vers un autre ;
 - ne jamais légender une image générique comme locale ;
 - marquer les sources, images et traductions non vérifiées « à valider » ;
 - faire passer les tests et une revue humaine nationale avant publication.
@@ -97,6 +97,6 @@ Cette application est le **pilote malien** et le socle de référence pour crée
 2. Remplacer le profil et les packs nationaux ; conserver le socle commun.
 3. Exécuter `npm test`, puis tester sur mobile et hors ligne.
 4. Faire valider le contenu par des spécialistes et autorités du pays.
-5. Créer un projet Vercel distinct et vérifier l'aperçu avant publication.
+5. Créer un projet Vercel distinct et vérifier l’aperçu avant publication.
 
 **État actuel :** le profil malien est initialisé et la procédure de duplication documentée. Les contenus pédagogiques existants restent maliens : ils ne sont pas automatiquement adaptés à un autre pays. Toute nouvelle édition exige son pack national complet.
